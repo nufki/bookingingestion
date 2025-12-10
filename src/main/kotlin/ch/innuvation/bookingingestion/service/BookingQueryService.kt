@@ -3,16 +3,19 @@ package ch.innuvation.bookingingestion.service
 import ch.innuvation.bookingingestion.dto.BookingDto
 import ch.innuvation.bookingingestion.jooq.tables.references.BOOKS
 import ch.innuvation.bookingingestion.jooq.tables.references.EVT_PKT
+import kotlinx.coroutines.reactive.awaitSingle
 import org.jooq.DSLContext
 import org.springframework.stereotype.Service
+import reactor.core.publisher.Flux
 
 @Service
 class BookingQueryService(
     private val dsl: DSLContext
 ) {
 
-    fun getBookingsByPosId(posId: Long): List<BookingDto> {
-        return dsl.select(
+    // Now reactive + coroutine friendly
+    suspend fun getBookingsByPosId(posId: Long): List<BookingDto> {
+        val query = dsl.select(
             BOOKS.EVT_ID,
             BOOKS.BU_ID,
             BOOKS.EVT_STATUS_ID,
@@ -30,7 +33,9 @@ class BookingQueryService(
             .join(EVT_PKT)
             .on(BOOKS.EVT_ID.eq(EVT_PKT.EVT_ID))
             .where(EVT_PKT.POS_ID.eq(posId))
-            .fetch { r ->
+
+        return Flux.from(query) // jOOQ ResultQuery is a Publisher<Record>
+            .map { r ->
                 BookingDto(
                     evtId = r[BOOKS.EVT_ID]!!,
                     buId = r[BOOKS.BU_ID],
@@ -46,5 +51,7 @@ class BookingQueryService(
                     extlBookText = r[EVT_PKT.EXTL_BOOK_TEXT]
                 )
             }
+            .collectList()
+            .awaitSingle()   // suspend here, returns List<BookingDto>
     }
 }

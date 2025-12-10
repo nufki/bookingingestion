@@ -1,0 +1,23 @@
+CREATE TABLE BOOKS (
+    EVT_ID        BIGINT      NOT NULL,
+    BU_ID         BIGINT      NULL,
+    EVT_STATUS_ID BIGINT      NULL,
+    VERI_DATE     DATE        NULL,
+    BOOK_DATE     DATE        NULL,
+    VAL_DATE      DATE        NULL,
+    TRX_DATE      DATE        NULL,
+    PERF_DATE     DATE        NULL,
+    PRIMARY KEY (EVT_ID)
+);
+
+CREATE TABLE EVT_PKT (
+    ID             BIGINT       NOT NULL AUTO_INCREMENT,
+    EVT_ID         BIGINT       NOT NULL,
+    POS_ID         BIGINT       NULL,
+    BOOK_KIND_ID   BIGINT       NULL,
+    QTY            DECIMAL(38,10) NULL,
+    EXTL_BOOK_TEXT VARCHAR(4000) NULL,
+    PRIMARY KEY (ID),
+    CONSTRAINT FK_EVT_PKT_BOOKS
+        FOREIGN KEY (EVT_ID) REFERENCES BOOKS (EVT_ID)
+);

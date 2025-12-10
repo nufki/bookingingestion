@@ -1,0 +1,19 @@
+spring:
+  kafka:
+    bootstrap-servers: ${spring.embedded.kafka.brokers}
+    properties:
+      schema.registry.url: mock://schema-registry
+      auto.register.schemas: true
+      use.latest.version: true
+  # db-properties only used if no docker-deamon is running (and hence testcontainers-framwork cannot be used)
+  r2dbc:
+    url: r2dbc:mysql://localhost:3306/BOOKING_INGESTION_DB
+    username: books
+    password: books
+    pool:
+      max-idle-time: 3s
+  flyway:
+    url: jdbc:mysql://localhost:3306/BOOKING_INGESTION_DB
+    user: ${spring.r2dbc.username}
+    password: ${spring.r2dbc.password}
+

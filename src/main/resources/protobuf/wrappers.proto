@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package com.avaloq.acp.bde.protobuf;
+
+message SInt64Value {
+  sint64 value = 1;
+}
+message UInt64Value {
+  uint64 value = 1;
+}
+message DoubleValue {
+  double value = 1;
+}
+message BoolValue {
+  bool value = 1;
+}
+message StringValue {
+  string value = 1;
+}
+message BytesValue {
+  bytes value = 1;
+}

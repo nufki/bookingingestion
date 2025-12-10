@@ -1,0 +1,58 @@
+syntax = "proto3";
+
+package com.avaloq.acp.bde.protobuf.books;
+
+import "meta_model.proto";
+import "wrappers.proto";
+import "options.proto";
+
+option (version) = "1.0.0";
+option java_multiple_files = true;
+
+message EvtPkt {
+  SInt64Value pkt_seq_nr = 1;
+  SInt64Value pos_id = 2;
+  SInt64Value book_kind_id = 3;
+  StringValue qty = 4;
+  SInt64Value cont_sgn = 5;
+  SInt64Value trig_seq_nr = 6;
+  StringValue book_val_ref = 7;
+  StringValue book_val_pos = 8;
+  SInt64Value ref_seq_nr = 9;
+  SInt64Value net_macc_seq_nr = 10;
+  SInt64Value net_pos_id = 11;
+  StringValue trx_val_ref = 12;
+  StringValue trx_val_pos = 13;
+  StringValue qty_2 = 14;
+  StringValue qty_3 = 15;
+  StringValue bvg_ref = 16;
+  StringValue bvg_pos = 17;
+  StringValue tvg_ref = 18;
+  StringValue tvg_pos = 19;
+  StringValue bvn_2_ref = 20;
+  StringValue bvn_2_pos = 21;
+  StringValue bvg_2_ref = 22;
+  StringValue bvg_2_pos = 23;
+  StringValue extl_book_text = 24;
+}
+
+message Books {
+  SInt64Value evt_id = 1;
+  SInt64Value version_nr = 2;
+  SInt64Value doc_id = 3;
+  SInt64Value meta_typ_id = 4;
+  SInt64Value order_type_id = 5;
+  SInt64Value bu_id = 6;
+  SInt64Value evt_status_id = 7;
+  SInt64Value pko_id = 8;
+  SInt64Value pko_ctx_id = 9;
+  StringValue veri_date = 10;
+  StringValue book_date = 11;
+  StringValue val_date = 12;
+  StringValue trx_date = 13;
+  StringValue perf_date = 14;
+  StringValue copr_seq_nr = 15;
+  SInt64Value seq_nr = 16;
+  repeated EvtPkt evt_pkt = 17;
+  SInt64Value version_atrx_seq_nr = 18;
+}

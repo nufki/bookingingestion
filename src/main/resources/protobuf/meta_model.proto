@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+import "google/protobuf/descriptor.proto";
+
+package com.avaloq.acp.bde.protobuf;
+
+extend google.protobuf.FieldOptions  {
+  string fld_type = 95765;
+  string bde_entity = 95766;
+  string format = 95767;
+  string bde_ref_type = 95768;
+}
+
+extend google.protobuf.MessageOptions {
+  bool is_bde_entity = 94765;
+}

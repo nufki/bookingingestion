@@ -1,0 +1,30 @@
+server.port: 8097
+
+spring:
+  main:
+    banner-mode: console
+  r2dbc:
+    url: r2dbc:mysql://localhost:3306/BOOKING_INGESTION_DB
+    username: books
+    password: books
+    pool:
+      max-size: 5
+      initial-size: 3
+      max-idle-time: 30s
+  flyway:
+    url: jdbc:mysql://localhost:3306/BOOKING_INGESTION_DB
+    user: ${spring.r2dbc.username}
+    password: ${spring.r2dbc.password}
+  kafka:
+    bootstrap-servers: localhost:9092
+    properties:
+      sasl.mechanism: SCRAM-SHA-512
+      sasl.jaas.config: org.apache.kafka.common.security.scram.ScramLoginModule required username="admin" password="password";
+      security.protocol: SASL_PLAINTEXT
+      schema.registry.url: http://localhost:9010/apis/ccompat/v7
+
+management:
+  endpoint:
+    health:
+      probes:
+        enabled: true

@@ -1,0 +1,42 @@
+spring:
+  application:
+    name: bookingingestion
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/BOOKING_INGESTION_DB?useSSL=false&serverTimezone=UTC
+    username: books
+    password: books
+
+  main:
+    banner-mode: off
+  flyway:
+    enabled: true
+  jooq:
+    sql-dialect: mysql
+  r2dbc:
+    pool:
+      max-acquire-time: 3s
+      max-create-connection-time: 3s
+
+  kafka:
+    properties:
+      auto.register.schemas: false
+
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: bookingingestion-group
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: io.confluent.kafka.serializers.protobuf.KafkaProtobufDeserializer
+      properties:
+        specific.protobuf.value.type: com.avaloq.acp.bde.protobuf.books.Books
+        schema.registry.url: http://localhost:9010/apis/ccompat/v7
+      auto-offset-reset: earliest
+
+
+
+innuvation:
+  bookingingestion-service:
+    listener-auto-startup: true
+    books:
+      input-topic-name: com.avaloq.acp.bde.books
+

@@ -2,15 +2,15 @@ package ch.innuvation.bookingingestion.config
 
 import ch.innuvation.bookingingestion.utils.logger
 import org.jooq.DSLContext
-import org.jooq.SQLDialect
 import org.jooq.ExecuteContext
 import org.jooq.ExecuteListener
+import org.jooq.SQLDialect
 import org.jooq.impl.DSL
 import org.jooq.impl.DefaultConfiguration
 import org.jooq.impl.DefaultExecuteListenerProvider
+import org.slf4j.Logger
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
-import org.slf4j.Logger
 import javax.sql.DataSource
 
 @Configuration

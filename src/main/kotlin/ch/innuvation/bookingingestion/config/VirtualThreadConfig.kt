@@ -1,6 +1,7 @@
 package ch.innuvation.bookingingestion.config
 
 import com.avaloq.acp.bde.protobuf.books.Books
+import org.springframework.boot.autoconfigure.condition.ConditionalOnBean
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.core.task.AsyncTaskExecutor
@@ -17,6 +18,7 @@ class VirtualThreadConfig {
         TaskExecutorAdapter(Executors.newVirtualThreadPerTaskExecutor())
 
     @Bean
+    @ConditionalOnBean(ConsumerFactory::class) // conditionally define the bean only if other Kafka beans exist because of the test
     fun kafkaListenerContainerFactory(
         consumerFactory: ConsumerFactory<String, Books>,
         virtualThreadExecutor: AsyncTaskExecutor

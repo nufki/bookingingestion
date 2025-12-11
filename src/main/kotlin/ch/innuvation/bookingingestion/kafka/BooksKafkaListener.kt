@@ -2,7 +2,6 @@ package ch.innuvation.bookingingestion.kafka
 
 import ch.innuvation.bookingingestion.service.BookingIngestionService
 import com.avaloq.acp.bde.protobuf.books.Books
-import kotlinx.coroutines.runBlocking
 import org.apache.kafka.clients.consumer.ConsumerRecord
 import org.slf4j.LoggerFactory
 import org.springframework.kafka.annotation.KafkaListener
@@ -21,7 +20,7 @@ class BooksKafkaListener(
         groupId = "\${spring.kafka.consumer.group-id}",
         batch = "true"
     )
-    fun consumeBooks(records: List<ConsumerRecord<String, Books?>>) = runBlocking {
+    fun consumeBooks(records: List<ConsumerRecord<String, Books?>>) {
         log.info("Received batch of ${records.size} Books messages")
 
         val messages = records

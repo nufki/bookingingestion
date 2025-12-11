@@ -13,10 +13,6 @@ spring:
     enabled: true
   jooq:
     sql-dialect: mysql
-  r2dbc:
-    pool:
-      max-acquire-time: 3s
-      max-create-connection-time: 3s
 
   kafka:
     properties:

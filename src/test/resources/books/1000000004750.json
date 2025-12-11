@@ -1,0 +1,51 @@
+{
+  "evtId": {
+    "value": "1000000004750"
+  },
+  "buId": {
+    "value": "235"
+  },
+  "evtStatusId": {
+    "value": "35"
+  },
+  "pkoId": {
+    "value": "1"
+  },
+  "veriDate": {
+    "value": "2017-12-31"
+  },
+  "bookDate": {
+    "value": "2017-12-31"
+  },
+  "valDate": {
+    "value": "2017-12-31"
+  },
+  "trxDate": {
+    "value": "2017-12-31"
+  },
+  "perfDate": {
+    "value": "2017-12-31"
+  },
+  "evtPkt": [
+    {
+      "pktSeqNr": {
+        "value": "311835"
+      },
+      "posId": {
+        "value": "311835"
+      },
+      "qty": {
+        "value": "0"
+      },
+      "contSgn": {
+        "value": "1"
+      },
+      "qty3": {
+        "value": "1"
+      }
+    }
+  ],
+  "versionAtrxSeqNr": {
+    "value": "59044"
+  }
+}

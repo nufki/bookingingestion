@@ -83,8 +83,7 @@ The project uses **profiles** with `application.yaml` and `application-dev.yaml`
 
 Key points:
 
-- JDBC datasource for Flyway:
-- R2DBC connection pool settings.
+- JDBC datasource for Flyway and the application
 - Kafka consumer configuration with Confluent protobuf deserializer:
 
 ```yaml
@@ -105,11 +104,6 @@ spring:
 
   jooq:
     sql-dialect: mysql
-
-  r2dbc:
-    pool:
-      max-acquire-time: 3s
-      max-create-connection-time: 3s
 
   kafka:
     bootstrap-servers: localhost:9092
@@ -143,19 +137,15 @@ spring:
   main:
     banner-mode: console
 
-  r2dbc:
-    url: r2dbc:mysql://localhost:3306/BOOKING_INGESTION_DB
+  datasource:
+    url: jdbc:mysql://localhost:3306/BOOKING_INGESTION_DB?useSSL=false&serverTimezone=UTC
     username: books
     password: books
-    pool:
-      max-size: 5
-      initial-size: 3
-      max-idle-time: 30s
 
   flyway:
     url: jdbc:mysql://localhost:3306/BOOKING_INGESTION_DB
-    user: ${spring.r2dbc.username}
-    password: ${spring.r2dbc.password}
+    user: ${spring.datasource.username}
+    password: ${spring.datasource.password}
 
   kafka:
     bootstrap-servers: localhost:9092

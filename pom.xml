@@ -97,38 +97,13 @@
 			<groupId>org.flywaydb</groupId>
 			<artifactId>flyway-mysql</artifactId>
 		</dependency>
-		<dependency>
-			<groupId>io.asyncer</groupId>
-			<artifactId>r2dbc-mysql</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>io.r2dbc</groupId>
-			<artifactId>r2dbc-pool</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>io.r2dbc</groupId>
-			<artifactId>r2dbc-proxy</artifactId>
-		</dependency>
 		<!-- jdbc-driver used in flyway -->
 		<dependency>
 			<groupId>com.mysql</groupId>
 			<artifactId>mysql-connector-j</artifactId>
 		</dependency>
 		<!-- reactive-->
-		<dependency>
-			<groupId>org.jetbrains.kotlinx</groupId>
-			<artifactId>kotlinx-coroutines-reactor</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>org.jetbrains.kotlinx</groupId>
-			<artifactId>kotlinx-coroutines-slf4j</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>io.projectreactor.kotlin</groupId>
-			<artifactId>reactor-kotlin-extensions</artifactId>
-		</dependency>
+		<!-- kotlinx-coroutines-slf4j not needed without reactor/flow logging -->
 
 
 		<!-- jOOQ core (needed to compile generated jOOQ Kotlin code) -->
@@ -160,11 +135,6 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-jdbc</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-r2dbc</artifactId>
 		</dependency>
 	</dependencies>
 

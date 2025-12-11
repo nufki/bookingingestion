@@ -5,12 +5,9 @@ import ch.innuvation.bookingingestion.proto.toLocalDateOrNull
 import ch.innuvation.bookingingestion.proto.toLongOrNull
 import ch.innuvation.bookingingestion.utils.logger
 import com.avaloq.acp.bde.protobuf.books.Books
-import io.r2dbc.spi.R2dbcException
-import kotlinx.coroutines.reactor.awaitSingle
 import org.jooq.DSLContext
 import org.jooq.exception.DataAccessException
 import org.springframework.stereotype.Repository
-import reactor.kotlin.core.publisher.toMono
 
 @Repository
 class BooksRepository(
@@ -22,7 +19,7 @@ class BooksRepository(
     /**
      * Batch upsert into BOOKS using one multi-values INSERT ... ON DUPLICATE KEY UPDATE.
      */
-    suspend fun upsertBatch(books: List<Books>) {
+    fun upsertBatch(books: List<Books>) {
         if (books.isEmpty()) return
 
         val insert = jooq.insertInto(
@@ -54,17 +51,12 @@ class BooksRepository(
         }
             .onDuplicateKeyUpdate()
             .setAllToExcluded()   // use EXCLUDED.* values for update
-            .toMono()
 
-        insert
-            .doOnError { e -> log.error("Failed to upsert BOOKS batch: ${getError(e)}", e) }
-            .awaitSingle()
-    }
-
-    private fun getError(t: Throwable): String? {
-        return if (t is DataAccessException) {
-            val cause = t.getCause(R2dbcException::class.java)
-            cause?.message ?: t.message
-        } else t.message
+        try {
+            insert.execute()
+        } catch (e: DataAccessException) {
+            log.error("Failed to upsert BOOKS batch: ${e.message}", e)
+            throw e
+        }
     }
 }

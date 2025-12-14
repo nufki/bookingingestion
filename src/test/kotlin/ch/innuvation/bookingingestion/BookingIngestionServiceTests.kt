@@ -28,7 +28,7 @@ import org.springframework.test.context.TestPropertySource
     ]
 )
 @TestPropertySource(properties = ["innuvation.bookingingestion-service.listener-auto-startup=false"])
-class BookingIngestionApplicationTests @Autowired constructor(
+class BookingIngestionServiceTests @Autowired constructor(
     private val bookingIngestionService: BookingIngestionService,
     private val dsl: DSLContext
 ) {
@@ -71,7 +71,7 @@ class BookingIngestionApplicationTests @Autowired constructor(
 
         val bookCount = dsl.fetchCount(BOOKS)
         val evtPktCount = dsl.fetchCount(EVT_PKT)
-        val expectedEvtPkts = messages.sumOf { it.evtPktCount }
+        val expectedEvtPkts = messages.sumOf { it.evtPktList.size }
 
         assertEquals(messages.size, bookCount, "book rows")
         assertEquals(expectedEvtPkts, evtPktCount, "evt_pkt rows")

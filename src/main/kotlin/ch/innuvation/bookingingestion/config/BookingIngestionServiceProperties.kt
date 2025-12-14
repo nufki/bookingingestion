@@ -8,7 +8,8 @@ import org.springframework.boot.context.properties.ConfigurationProperties
 @ConfigurationProperties("innuvation.bookingingestion-service")
 data class BookingIngestionServiceProperties(
     val books: TopicNameConfig,
-    val listenerAutoStartup: Boolean = true
+    val listenerAutoStartup: Boolean = true,
+    val batchSize: Int = 100
 ) {
     data class TopicNameConfig(
         val inputTopicName: String,

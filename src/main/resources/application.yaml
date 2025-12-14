@@ -36,6 +36,7 @@ spring:
 innuvation:
   bookingingestion-service:
     listener-auto-startup: true
+    batch-size: 100
     books:
       input-topic-name: com.avaloq.acp.bde.books
 

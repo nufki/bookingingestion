@@ -12,6 +12,6 @@ class BookingController(
 ) {
 
     @GetMapping("/bookings/position/{posId}")
-    suspend fun getBookingsByPosition(@PathVariable posId: Long): List<BookingDto> =
+    fun getBookingsByPosition(@PathVariable posId: Long): List<BookingDto> =
         bookingQueryService.getBookingsByPosId(posId)
 }

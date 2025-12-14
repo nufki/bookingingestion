@@ -1,13 +1,17 @@
 package ch.innuvation.bookingingestion.config
 
 import ch.innuvation.bookingingestion.utils.logger
-import io.r2dbc.proxy.ProxyConnectionFactory
-import io.r2dbc.proxy.core.Bindings
-import io.r2dbc.spi.ConnectionFactory
 import org.jooq.DSLContext
+import org.jooq.ExecuteContext
+import org.jooq.ExecuteListener
+import org.jooq.SQLDialect
 import org.jooq.impl.DSL
+import org.jooq.impl.DefaultConfiguration
+import org.jooq.impl.DefaultExecuteListenerProvider
+import org.slf4j.Logger
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
+import javax.sql.DataSource
 
 @Configuration
 class JooqConfig {
@@ -15,29 +19,28 @@ class JooqConfig {
     private val log = logger()
 
     @Bean
-    fun jooqConfiguration(connectionFactory: ConnectionFactory): DSLContext {
-        val proxiedConnection = ProxyConnectionFactory.builder(connectionFactory)
-            .onBeforeQuery {
-                if(log.isDebugEnabled) {
-                    log.debug("executing queries: \n${
-                        it.queries.joinToString(separator = "\n") { queryInfo -> queryInfo.query }
-                    }")
-                    log.debug("with bindings: \n${
-                        it.queries.flatMap { queries -> queries.bindingsList }.joinToString(separator = "\n") { query ->
-                            getUsedBindings(query)
-                                .joinToString { binding -> "${binding.key}: ${binding.boundValue.value}" }
-                        }
-                    }"
-                    )
-                }
-            }
-            .build()
-        return DSL.using(proxiedConnection)
+    fun dslContext(dataSource: DataSource): DSLContext {
+        val configuration = DefaultConfiguration().apply {
+            setDataSource(dataSource)
+            setSQLDialect(SQLDialect.MYSQL)
+            set(DefaultExecuteListenerProvider(LoggingExecuteListener(log)))
+        }
+        return DSL.using(configuration)
     }
 
-    private fun getUsedBindings(it: Bindings) = if (it.indexBindings.size > 0) {
-        it.indexBindings
-    } else {
-        it.namedBindings
+    /**
+     * Lightweight SQL logger similar to previous R2DBC proxy logging.
+     */
+    private class LoggingExecuteListener(private val log: Logger) : ExecuteListener {
+        override fun executeStart(ctx: ExecuteContext) {
+            if (log.isDebugEnabled) {
+                val sql = ctx.sql()
+                val bindings = ctx.query()
+                    ?.bindValues?.joinToString(prefix = "[", postfix = "]") { value -> value?.toString() ?: "null" }
+                    ?: "[]"
+                log.debug("executing queries:\n$sql")
+                log.debug("with bindings:\n$bindings")
+            }
+        }
     }
 }

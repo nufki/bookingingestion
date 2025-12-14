@@ -24,7 +24,8 @@ class JooqExtensions {
                 return emptyMap()
             }
 
-            val stringMap: Map<String, String> = mapper.readValue(jsonField.data(), object : TypeReference<Map<String, String>>() {})
+            val stringMap: Map<String, String> =
+                mapper.readValue(jsonField.data(), object : TypeReference<Map<String, String>>() {})
 
             return mapOf(
                 Locale.GERMAN.toLanguageTag() to stringMap[Locale.GERMAN.toLanguageTag()],

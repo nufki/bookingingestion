@@ -6,12 +6,9 @@ import ch.innuvation.bookingingestion.proto.toLongOrNull
 import ch.innuvation.bookingingestion.proto.toStringOrNull
 import ch.innuvation.bookingingestion.utils.logger
 import com.avaloq.acp.bde.protobuf.books.EvtPkt
-import io.r2dbc.spi.R2dbcException
-import kotlinx.coroutines.reactor.awaitSingle
 import org.jooq.DSLContext
 import org.jooq.exception.DataAccessException
 import org.springframework.stereotype.Repository
-import reactor.kotlin.core.publisher.toMono
 
 @Repository
 class EvtPktRepository(
@@ -24,7 +21,7 @@ class EvtPktRepository(
      * Batch insert/upsert all EVT_PKT rows for a batch of events.
      * Param is a list of (evtId, pkt) pairs.
      */
-    suspend fun upsertBatch(packets: List<Pair<Long, EvtPkt>>) {
+    fun upsertBatch(packets: List<Pair<Long, EvtPkt>>) {
         if (packets.isEmpty()) return
 
         val insert = jooq.insertInto(
@@ -47,17 +44,12 @@ class EvtPktRepository(
         }
             .onDuplicateKeyUpdate()
             .setAllToExcluded()
-            .toMono()
 
-        insert
-            .doOnError { e -> log.error("Failed to upsert EVT_PKT batch: ${getError(e)}", e) }
-            .awaitSingle()
-    }
-
-    private fun getError(t: Throwable): String? {
-        return if (t is DataAccessException) {
-            val cause = t.getCause(R2dbcException::class.java)
-            cause?.message ?: t.message
-        } else t.message
+        try {
+            insert.execute()
+        } catch (e: DataAccessException) {
+            log.error("Failed to upsert EVT_PKT batch: ${e.message}", e)
+            throw e
+        }
     }
 }

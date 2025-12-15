@@ -22,7 +22,7 @@ class BooksKafkaListenerTest : IntegrationTest() {
         // Wait for listener to be assigned partitions
         val listenerContainer = kafkaListenerEndpointRegistry.getListenerContainer("books-listener")
         listenerContainer?.let {
-            ContainerTestUtils.waitForAssignment(it, 1)
+            ContainerTestUtils.waitForAssignment(it, 3)
         }
     }
 

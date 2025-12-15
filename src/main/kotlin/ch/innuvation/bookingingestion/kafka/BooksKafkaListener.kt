@@ -1,5 +1,6 @@
 package ch.innuvation.bookingingestion.kafka
 
+import ch.innuvation.bookingingestion.config.KafkaConfig.Companion.BOOKING_INGESTION_SERVICE_CONTAINER_FACTORY_BEAN_NAME
 import ch.innuvation.bookingingestion.service.BookingIngestionService
 import com.avaloq.acp.bde.protobuf.books.Books
 import org.apache.kafka.clients.consumer.ConsumerRecord
@@ -18,14 +19,15 @@ class BooksKafkaListener(
         id = "books-listener",
         topics = ["\${innuvation.bookingingestion-service.books.input-topic-name}"],
         groupId = "\${spring.kafka.consumer.group-id}",
-        batch = "true"
+        batch = "true",
+        containerFactory = BOOKING_INGESTION_SERVICE_CONTAINER_FACTORY_BEAN_NAME
     )
     fun consumeBooks(records: List<ConsumerRecord<String, Books?>>) {
         log.info("Received batch of ${records.size} Books messages")
 
+
         val messages = records
             .mapNotNull { it.value() }   // no tombstones, but just to be safe
-
         try {
             bookingIngestionService.ingestBatch(messages)
         } catch (e: Exception) {

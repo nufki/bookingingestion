@@ -24,13 +24,13 @@ import org.testcontainers.utility.DockerImageName
 
 @Testcontainers
 @EmbeddedKafka(
-    partitions = 1,
-    brokerProperties = ["auto.create.topics.enable=true"]
+    kraft = true,
+    brokerProperties = ["auto.create.topics.enable=false"]
 )
 @ActiveProfiles("test")
 @SpringBootTest
 abstract class IntegrationTest {
-
+    
     companion object {
         @Container
         private val mysql: MySQLContainer<*> = MySQLContainer(DockerImageName.parse("mysql:8.4"))

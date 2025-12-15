@@ -19,19 +19,8 @@ import org.testcontainers.containers.MySQLContainer
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.test.context.TestPropertySource
 
-@Testcontainers
-@ActiveProfiles("test")
-@SpringBootTest(
-    classes = [BookingIngestionApplication::class],
-    properties = [
-        "spring.kafka.bootstrap-servers="  // Empty = no Kafka broker
-    ]
-)
-@TestPropertySource(properties = ["innuvation.bookingingestion-service.listener-auto-startup=false"])
-class BookingIngestionServiceTests @Autowired constructor(
-    private val bookingIngestionService: BookingIngestionService,
-    private val dsl: DSLContext
-) {
+class BookingIngestionServiceTests : IntegrationTest() {
+
 
     companion object {
         @Container
@@ -69,8 +58,8 @@ class BookingIngestionServiceTests @Autowired constructor(
 
         bookingIngestionService.ingestBatch(messages)
 
-        val bookCount = dsl.fetchCount(BOOKS)
-        val evtPktCount = dsl.fetchCount(EVT_PKT)
+        val bookCount = jooq.fetchCount(BOOKS)
+        val evtPktCount = jooq.fetchCount(EVT_PKT)
         val expectedEvtPkts = messages.sumOf { it.evtPktList.size }
 
         assertEquals(messages.size, bookCount, "book rows")

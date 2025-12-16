@@ -9,6 +9,7 @@ import com.avaloq.acp.bde.protobuf.books.EvtPkt
 import org.jooq.DSLContext
 import org.jooq.exception.DataAccessException
 import org.springframework.stereotype.Repository
+import java.math.BigInteger
 
 @Repository
 class EvtPktRepository(
@@ -27,16 +28,20 @@ class EvtPktRepository(
         val insert = jooq.insertInto(
             EVT_PKT,
             EVT_PKT.EVT_ID,
+            EVT_PKT.PKT_SEQ_NR,
             EVT_PKT.POS_ID,
             EVT_PKT.BOOK_KIND_ID,
             EVT_PKT.QTY,
             EVT_PKT.EXTL_BOOK_TEXT
         ).apply {
             packets.forEach { (evtId, pkt) ->
+                val pktSeqNr = pkt.pktSeqNr.toLongOrNull()
+                    ?: throw IllegalArgumentException("pktSeqNr is required")
                 values(
-                    evtId,
-                    pkt.posId.toLongOrNull(),
-                    pkt.bookKindId.toLongOrNull(),
+                    BigInteger.valueOf(evtId),
+                    BigInteger.valueOf(pktSeqNr),
+                    pkt.posId.toLongOrNull()?.let { BigInteger.valueOf(it) },
+                    pkt.bookKindId.toLongOrNull()?.let { BigInteger.valueOf(it) },
                     pkt.qty.toBigDecimalOrNull(),
                     pkt.extlBookText.toStringOrNull()
                 )

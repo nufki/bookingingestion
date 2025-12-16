@@ -11,6 +11,7 @@ import org.springframework.core.io.ClassPathResource
 import org.springframework.kafka.config.KafkaListenerEndpointRegistry
 import org.springframework.kafka.test.utils.ContainerTestUtils
 import java.io.File
+import java.math.BigInteger
 
 class BooksKafkaListenerTest : IntegrationTest() {
 
@@ -53,16 +54,17 @@ class BooksKafkaListenerTest : IntegrationTest() {
             val evtId = book.evtId.toLongOrNull()
             assertThat(evtId).isNotNull
 
+            val evtIdBigInt = BigInteger.valueOf(evtId!!)
             val bookRecord = jooq.selectFrom(BOOKS)
-                .where(BOOKS.EVT_ID.eq(evtId))
+                .where(BOOKS.EVT_ID.eq(evtIdBigInt))
                 .fetchOne()
 
             assertThat(bookRecord).isNotNull
-            assertThat(bookRecord!![BOOKS.EVT_ID]).isEqualTo(evtId)
+            assertThat(bookRecord!![BOOKS.EVT_ID] as? BigInteger).isEqualTo(evtIdBigInt)
 
             // Verify EVT_PKT records for this book
             val evtPktRecords = jooq.selectFrom(EVT_PKT)
-                .where(EVT_PKT.EVT_ID.eq(evtId))
+                .where(EVT_PKT.EVT_ID.eq(evtIdBigInt))
                 .fetch()
 
             assertThat(evtPktRecords.size).isEqualTo(book.evtPktList.size)
@@ -112,8 +114,10 @@ class BooksKafkaListenerTest : IntegrationTest() {
         assertThat(bookCount).isEqualTo(1)
 
         // Verify the record exists
+        val evtIdLong = firstMessage.evtId.toLongOrNull()
+        assertThat(evtIdLong).isNotNull
         val bookRecord = jooq.selectFrom(BOOKS)
-            .where(BOOKS.EVT_ID.eq(firstMessage.evtId.toLongOrNull()))
+            .where(BOOKS.EVT_ID.eq(BigInteger.valueOf(evtIdLong!!)))
             .fetchOne()
 
         assertThat(bookRecord).isNotNull

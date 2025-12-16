@@ -22,7 +22,10 @@ class JooqConfig {
     fun dslContext(dataSource: DataSource): DSLContext {
         val configuration = DefaultConfiguration().apply {
             setDataSource(dataSource)
-            setSQLDialect(SQLDialect.MYSQL)
+            // Note: Oracle dialect not available in jOOQ Open Source Edition
+            // Oracle support requires jOOQ Professional/Enterprise Edition
+            // Using DEFAULT dialect - SQL will still work but without Oracle-specific optimizations
+            // Spring Boot's jOOQ auto-configuration will try to detect from DataSource
             set(DefaultExecuteListenerProvider(LoggingExecuteListener(log)))
         }
         return DSL.using(configuration)

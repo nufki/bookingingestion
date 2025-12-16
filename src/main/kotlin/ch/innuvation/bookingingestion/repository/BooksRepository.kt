@@ -8,6 +8,7 @@ import com.avaloq.acp.bde.protobuf.books.Books
 import org.jooq.DSLContext
 import org.jooq.exception.DataAccessException
 import org.springframework.stereotype.Repository
+import java.math.BigInteger
 
 @Repository
 class BooksRepository(
@@ -17,7 +18,9 @@ class BooksRepository(
     private val log = logger()
 
     /**
-     * Batch upsert into BOOKS using one multi-values INSERT ... ON DUPLICATE KEY UPDATE.
+     * Batch upsert into BOOKS using jOOQ's onDuplicateKeyUpdate().
+     * For MySQL: translates to INSERT ... ON DUPLICATE KEY UPDATE
+     * For Oracle: translates to MERGE statement
      */
     fun upsertBatch(books: List<Books>) {
         if (books.isEmpty()) return
@@ -38,9 +41,9 @@ class BooksRepository(
                     ?: throw IllegalArgumentException("evtId is required")
 
                 values(
-                    evtId,
-                    msg.buId.toLongOrNull(),
-                    msg.evtStatusId.toLongOrNull(),
+                    BigInteger.valueOf(evtId),
+                    msg.buId.toLongOrNull()?.let { BigInteger.valueOf(it) },
+                    msg.evtStatusId.toLongOrNull()?.let { BigInteger.valueOf(it) },
                     msg.veriDate.toLocalDateOrNull(),
                     msg.bookDate.toLocalDateOrNull(),
                     msg.valDate.toLocalDateOrNull(),

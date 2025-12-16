@@ -17,7 +17,7 @@ import org.springframework.kafka.test.context.EmbeddedKafka
 import org.springframework.test.context.ActiveProfiles
 import org.springframework.test.context.DynamicPropertyRegistry
 import org.springframework.test.context.DynamicPropertySource
-import org.testcontainers.containers.MySQLContainer
+import org.testcontainers.containers.OracleContainer
 import org.testcontainers.junit.jupiter.Container
 import org.testcontainers.junit.jupiter.Testcontainers
 import org.testcontainers.utility.DockerImageName
@@ -33,7 +33,7 @@ abstract class IntegrationTest {
 
     companion object {
         @Container
-        private val mysql: MySQLContainer<*> = MySQLContainer(DockerImageName.parse("mysql:8.4"))
+        private val oracle: OracleContainer = OracleContainer(DockerImageName.parse("gvenzl/oracle-xe:latest"))
             .withDatabaseName("BOOKING_INGESTION_DB")
             .withUsername("books")
             .withPassword("books")
@@ -42,18 +42,18 @@ abstract class IntegrationTest {
         @JvmStatic
         @DynamicPropertySource
         fun registerProps(registry: DynamicPropertyRegistry) {
-            registry.add("spring.datasource.url") { mysql.jdbcUrl }
-            registry.add("spring.datasource.username") { mysql.username }
-            registry.add("spring.datasource.password") { mysql.password }
-            registry.add("spring.flyway.url") { mysql.jdbcUrl }
-            registry.add("spring.flyway.user") { mysql.username }
-            registry.add("spring.flyway.password") { mysql.password }
+            registry.add("spring.datasource.url") { oracle.jdbcUrl }
+            registry.add("spring.datasource.username") { oracle.username }
+            registry.add("spring.datasource.password") { oracle.password }
+            registry.add("spring.flyway.url") { oracle.jdbcUrl }
+            registry.add("spring.flyway.user") { oracle.username }
+            registry.add("spring.flyway.password") { oracle.password }
         }
 
         @JvmStatic
         fun initContainer() {
-            if (!mysql.isRunning) {
-                mysql.start()
+            if (!oracle.isRunning) {
+                oracle.start()
             }
         }
     }

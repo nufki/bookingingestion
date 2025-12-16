@@ -75,14 +75,17 @@ services:
       retries: 20
 
 
-  mysql:
-    image: mysql:8.0
-    container_name: bookingingestion-mysql
+  oracle:
+    image: gvenzl/oracle-xe:latest
+    container_name: bookingingestion-oracle
     ports:
-      - "3306:3306"
+      - "1521:1521"
+      - "5500:5500"
     environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: BOOKING_INGESTION_DB
-      MYSQL_USER: books
-      MYSQL_PASSWORD: books
-    command: --default-authentication-plugin=mysql_native_password
+      ORACLE_PASSWORD: books
+      ORACLE_DATABASE: BOOKING_INGESTION_DB
+    healthcheck:
+      test: ["CMD", "healthcheck.sh"]
+      interval: 10s
+      timeout: 5s
+      retries: 10

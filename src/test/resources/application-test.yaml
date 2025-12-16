@@ -13,11 +13,12 @@ spring:
         use.latest.version: true
   # db-properties only used if no docker-deamon is running (and hence testcontainers-framwork cannot be used)
   datasource:
-    url: jdbc:mysql://localhost:3306/BOOKING_INGESTION_DB?useSSL=false&serverTimezone=UTC
+    url: jdbc:oracle:thin:@localhost:1521:BOOKING_INGESTION_DB
     username: books
     password: books
+    driver-class-name: oracle.jdbc.OracleDriver
   flyway:
-    url: jdbc:mysql://localhost:3306/BOOKING_INGESTION_DB
+    url: jdbc:oracle:thin:@localhost:1521:BOOKING_INGESTION_DB
     user: ${spring.datasource.username}
     password: ${spring.datasource.password}
 

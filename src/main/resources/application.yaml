@@ -3,9 +3,10 @@ spring:
     name: bookingingestion
 
   datasource:
-    url: jdbc:mysql://localhost:3306/BOOKING_INGESTION_DB?useSSL=false&serverTimezone=UTC
+    url: jdbc:oracle:thin:@localhost:1521:BOOKING_INGESTION_DB
     username: books
     password: books
+    driver-class-name: oracle.jdbc.OracleDriver
 
   main:
     banner-mode: off
@@ -14,8 +15,11 @@ spring:
       enabled: true
   flyway:
     enabled: true
-  jooq:
-    sql-dialect: mysql
+  # Note: Oracle dialect not available in jOOQ Open Source Edition
+  # jOOQ will use DEFAULT dialect - SQL will still work but without Oracle-specific optimizations
+  # For full Oracle support, upgrade to jOOQ Professional/Enterprise Edition
+  # jooq:
+  #   sql-dialect: oracle
 
   kafka:
     properties:

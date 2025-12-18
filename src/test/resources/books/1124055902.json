@@ -1,0 +1,52 @@
+{
+  "evtId" : {
+    "value" : "1124055902"
+  },
+  "buId" : {
+    "value" : "146"
+  },
+  "evtStatusId" : {
+    "value" : "30"
+  },
+  "pkoId" : {
+    "value" : "1"
+  },
+  "veriDate" : {
+    "value" : "2020-02-14"
+  },
+  "bookDate" : {
+    "value" : "2020-02-14"
+  },
+  "valDate" : {
+    "value" : "2020-02-14"
+  },
+  "trxDate" : {
+    "value" : "2020-02-14"
+  },
+  "perfDate" : {
+    "value" : "2020-02-14"
+  },
+  "evtPkt" : [ {
+    "pktSeqNr" : {
+      "value" : "1"
+    },
+    "posId" : {
+      "value" : "124395677"
+    },
+    "qty" : {
+      "value" : "0"
+    },
+    "contSgn" : {
+      "value" : "-1"
+    },
+    "qty3" : {
+      "value" : "-1"
+    },
+    "extlBookText" : {
+      "value" : "Booking Orders for Recurring Order Instance Generation"
+    }
+  } ],
+  "versionAtrxSeqNr" : {
+    "value" : "30935567"
+  }
+}

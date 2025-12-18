@@ -13,7 +13,7 @@ data class BookingDto(
     val trxDate: LocalDate?,
     val perfDate: LocalDate?,
     val posId: Long?,
-    val bookKindId: Long?,
     val qty: BigDecimal?,
+    val qty3: BigDecimal?,
     val extlBookText: String?
 )

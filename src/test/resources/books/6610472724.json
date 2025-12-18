@@ -1,0 +1,52 @@
+{
+  "evtId" : {
+    "value" : "6610472724"
+  },
+  "buId" : {
+    "value" : "146"
+  },
+  "evtStatusId" : {
+    "value" : "30"
+  },
+  "pkoId" : {
+    "value" : "1"
+  },
+  "veriDate" : {
+    "value" : "2024-11-05"
+  },
+  "bookDate" : {
+    "value" : "2024-11-05"
+  },
+  "valDate" : {
+    "value" : "2024-11-07"
+  },
+  "trxDate" : {
+    "value" : "2024-11-05"
+  },
+  "perfDate" : {
+    "value" : "2024-11-05"
+  },
+  "evtPkt" : [ {
+    "pktSeqNr" : {
+      "value" : "1"
+    },
+    "posId" : {
+      "value" : "124395677"
+    },
+    "qty" : {
+      "value" : "-2557.2"
+    },
+    "contSgn" : {
+      "value" : "-1"
+    },
+    "qty3" : {
+      "value" : null
+    },
+    "extlBookText" : {
+      "value" : "Verkauf 2'000, Youngtimers Br\nValoren-Nr. 632685, Referenz-Nr. 17772868512\nKurs CHF 1.30"
+    }
+  } ],
+  "versionAtrxSeqNr" : {
+    "value" : "106099232"
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "evtId" : {
+    "value" : "1884733142"
+  },
+  "buId" : {
+    "value" : "146"
+  },
+  "evtStatusId" : {
+    "value" : "30"
+  },
+  "pkoId" : {
+    "value" : "1"
+  },
+  "veriDate" : {
+    "value" : "2021-01-07"
+  },
+  "bookDate" : {
+    "value" : "2021-01-07"
+  },
+  "valDate" : {
+    "value" : "2021-01-11"
+  },
+  "trxDate" : {
+    "value" : "2021-01-07"
+  },
+  "perfDate" : {
+    "value" : "2021-01-07"
+  },
+  "evtPkt" : [ {
+    "pktSeqNr" : {
+      "value" : "1"
+    },
+    "posId" : {
+      "value" : "124395677"
+    },
+    "qty" : {
+      "value" : "2403.37"
+    },
+    "contSgn" : {
+      "value" : "-1"
+    },
+    "qty3" : {
+      "value" : null
+    },
+    "extlBookText" : {
+      "value" : "Kauf 2'000 / The Native Br\nValoren-Nr.: 632685 / Referenz-Nr.: 12391712007\nKurs CHF 1.18"
+    }
+  } ],
+  "versionAtrxSeqNr" : {
+    "value" : "44935982"
+  }
+}

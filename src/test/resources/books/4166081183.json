@@ -1,0 +1,52 @@
+{
+  "evtId" : {
+    "value" : "4166081183"
+  },
+  "buId" : {
+    "value" : "146"
+  },
+  "evtStatusId" : {
+    "value" : "30"
+  },
+  "pkoId" : {
+    "value" : "1"
+  },
+  "veriDate" : {
+    "value" : "2023-02-09"
+  },
+  "bookDate" : {
+    "value" : "2023-02-09"
+  },
+  "valDate" : {
+    "value" : "2023-02-13"
+  },
+  "trxDate" : {
+    "value" : "2023-02-09"
+  },
+  "perfDate" : {
+    "value" : "2023-02-09"
+  },
+  "evtPkt" : [ {
+    "pktSeqNr" : {
+      "value" : "1"
+    },
+    "posId" : {
+      "value" : "124395677"
+    },
+    "qty" : {
+      "value" : "5805.17"
+    },
+    "contSgn" : {
+      "value" : "-1"
+    },
+    "qty3" : {
+      "value" : null
+    },
+    "extlBookText" : {
+      "value" : "Kauf 2'000, CS Group N\nValoren-Nr. 1213853, Referenz-Nr. 15060250734\nKurs CHF 2.88"
+    }
+  } ],
+  "versionAtrxSeqNr" : {
+    "value" : "77767066"
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "evtId" : {
+    "value" : "1827809497"
+  },
+  "buId" : {
+    "value" : "146"
+  },
+  "evtStatusId" : {
+    "value" : "30"
+  },
+  "pkoId" : {
+    "value" : "1"
+  },
+  "veriDate" : {
+    "value" : "2020-12-22"
+  },
+  "bookDate" : {
+    "value" : "2020-12-22"
+  },
+  "valDate" : {
+    "value" : "2020-12-24"
+  },
+  "trxDate" : {
+    "value" : "2020-12-22"
+  },
+  "perfDate" : {
+    "value" : "2020-12-22"
+  },
+  "evtPkt" : [ {
+    "pktSeqNr" : {
+      "value" : "1"
+    },
+    "posId" : {
+      "value" : "124395677"
+    },
+    "qty" : {
+      "value" : "1978.05"
+    },
+    "contSgn" : {
+      "value" : "-1"
+    },
+    "qty3" : {
+      "value" : null
+    },
+    "extlBookText" : {
+      "value" : "Kauf 5'000 / RELIEF THER Hlg N\nValoren-Nr.: 10019113 / Referenz-Nr.: 12324739869\nKurs CHF 0.387"
+    }
+  } ],
+  "versionAtrxSeqNr" : {
+    "value" : "44301299"
+  }
+}

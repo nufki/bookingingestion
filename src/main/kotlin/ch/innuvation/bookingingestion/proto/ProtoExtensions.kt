@@ -8,7 +8,10 @@ import java.time.format.DateTimeFormatter
 fun Wrappers.SInt64Value?.toLongOrNull(): Long? = this?.value
 
 fun Wrappers.StringValue?.toBigDecimalOrNull(): BigDecimal? =
-    this?.value?.let { BigDecimal(it) }
+    this?.value
+        ?.trim()
+        ?.takeIf { it.isNotEmpty() }
+        ?.let { runCatching { BigDecimal(it) }.getOrNull() }
 
 fun Wrappers.StringValue?.toLocalDateOrNull(): LocalDate? =
     this?.value?.let { LocalDate.parse(it) }

@@ -22,8 +22,8 @@ class BookingQueryService(
             BOOKS.TRX_DATE,
             BOOKS.PERF_DATE,
             EVT_PKT.POS_ID,
-            EVT_PKT.BOOK_KIND_ID,
             EVT_PKT.QTY,
+            EVT_PKT.QTY3,
             EVT_PKT.EXTL_BOOK_TEXT
         )
             .from(BOOKS)
@@ -41,8 +41,8 @@ class BookingQueryService(
                     trxDate = r[BOOKS.TRX_DATE],
                     perfDate = r[BOOKS.PERF_DATE],
                     posId = r[EVT_PKT.POS_ID],
-                    bookKindId = r[EVT_PKT.BOOK_KIND_ID],
                     qty = r[EVT_PKT.QTY],
+                    qty3 = r[EVT_PKT.QTY3],
                     extlBookText = r[EVT_PKT.EXTL_BOOK_TEXT]
                 )
             }

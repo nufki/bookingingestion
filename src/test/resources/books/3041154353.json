@@ -1,0 +1,52 @@
+{
+  "evtId" : {
+    "value" : "3041154353"
+  },
+  "buId" : {
+    "value" : "146"
+  },
+  "evtStatusId" : {
+    "value" : "30"
+  },
+  "pkoId" : {
+    "value" : "1"
+  },
+  "veriDate" : {
+    "value" : "2022-03-08"
+  },
+  "bookDate" : {
+    "value" : "2022-03-08"
+  },
+  "valDate" : {
+    "value" : "2022-03-10"
+  },
+  "trxDate" : {
+    "value" : "2022-03-08"
+  },
+  "perfDate" : {
+    "value" : "2022-03-08"
+  },
+  "evtPkt" : [ {
+    "pktSeqNr" : {
+      "value" : "1"
+    },
+    "posId" : {
+      "value" : "124395677"
+    },
+    "qty" : {
+      "value" : "-632.41"
+    },
+    "contSgn" : {
+      "value" : "-1"
+    },
+    "qty3" : {
+      "value" : null
+    },
+    "extlBookText" : {
+      "value" : "Verkauf 3'000, PowerTap Hydrogn Rg\nValoren-Nr. 112011167, Referenz-Nr. 13774814465\nKurs EUR 0.23, Umrechnungskurs 0.9950"
+    }
+  } ],
+  "versionAtrxSeqNr" : {
+    "value" : "63101237"
+  }
+}

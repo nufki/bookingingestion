@@ -1,0 +1,52 @@
+{
+  "evtId" : {
+    "value" : "2710094216"
+  },
+  "buId" : {
+    "value" : "146"
+  },
+  "evtStatusId" : {
+    "value" : "30"
+  },
+  "pkoId" : {
+    "value" : "1"
+  },
+  "veriDate" : {
+    "value" : "2021-11-19"
+  },
+  "bookDate" : {
+    "value" : "2021-11-19"
+  },
+  "valDate" : {
+    "value" : "2021-11-22"
+  },
+  "trxDate" : {
+    "value" : "2021-11-18"
+  },
+  "perfDate" : {
+    "value" : "2021-11-18"
+  },
+  "evtPkt" : [ {
+    "pktSeqNr" : {
+      "value" : "1"
+    },
+    "posId" : {
+      "value" : "124395677"
+    },
+    "qty" : {
+      "value" : "4376.07"
+    },
+    "contSgn" : {
+      "value" : "-1"
+    },
+    "qty3" : {
+      "value" : null
+    },
+    "extlBookText" : {
+      "value" : "Kauf 3'000 / Cidara Therapeut Rg\nValoren-Nr.: 27537741 / Referenz-Nr.: 13390802824\nKurs EUR 1.35 / Umrechnungskurs 1.0641"
+    }
+  } ],
+  "versionAtrxSeqNr" : {
+    "value" : "58362137"
+  }
+}

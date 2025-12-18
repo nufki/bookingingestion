@@ -33,6 +33,7 @@
 		<protobuf.version>4.29.3</protobuf.version>
 		<protoc.version>3.25.3</protoc.version>
 		<protoc-jar-maven-plugin.version>3.11.4</protoc-jar-maven-plugin.version>
+		<jackson.verson>2.20.1</jackson.verson>
 <!--		<jooq.version>3.20.8</jooq.version>-->
 	</properties>
 
@@ -163,6 +164,19 @@
             <version>1.8.1</version>
             <scope>test</scope>
         </dependency>
+
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>${jackson.verson}</version>
+		</dependency>
+
+		<!-- Kotlin module: provides jacksonObjectMapper() -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.module</groupId>
+			<artifactId>jackson-module-kotlin</artifactId>
+			<version>${jackson.verson}</version>
+		</dependency>
     </dependencies>
 
 	<build>

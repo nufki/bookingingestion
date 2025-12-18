@@ -1,0 +1,52 @@
+{
+  "evtId" : {
+    "value" : "2414164077"
+  },
+  "buId" : {
+    "value" : "146"
+  },
+  "evtStatusId" : {
+    "value" : "30"
+  },
+  "pkoId" : {
+    "value" : "1"
+  },
+  "veriDate" : {
+    "value" : "2021-08-04"
+  },
+  "bookDate" : {
+    "value" : "2021-08-04"
+  },
+  "valDate" : {
+    "value" : "2021-08-06"
+  },
+  "trxDate" : {
+    "value" : "2021-08-04"
+  },
+  "perfDate" : {
+    "value" : "2021-08-04"
+  },
+  "evtPkt" : [ {
+    "pktSeqNr" : {
+      "value" : "1"
+    },
+    "posId" : {
+      "value" : "124395677"
+    },
+    "qty" : {
+      "value" : "2793.59"
+    },
+    "contSgn" : {
+      "value" : "-1"
+    },
+    "qty3" : {
+      "value" : null
+    },
+    "extlBookText" : {
+      "value" : "Kauf 20'000 / DataMetrex AI Rg\nValoren-Nr.: 38465399 / Referenz-Nr.: 13045864834\nKurs EUR 0.125 / Umrechnungskurs 1.0918"
+    }
+  } ],
+  "versionAtrxSeqNr" : {
+    "value" : "53824402"
+  }
+}

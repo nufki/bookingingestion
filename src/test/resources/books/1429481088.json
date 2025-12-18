@@ -1,0 +1,52 @@
+{
+  "evtId" : {
+    "value" : "1429481088"
+  },
+  "buId" : {
+    "value" : "146"
+  },
+  "evtStatusId" : {
+    "value" : "30"
+  },
+  "pkoId" : {
+    "value" : "1"
+  },
+  "veriDate" : {
+    "value" : "2020-07-06"
+  },
+  "bookDate" : {
+    "value" : "2020-07-06"
+  },
+  "valDate" : {
+    "value" : "2020-07-08"
+  },
+  "trxDate" : {
+    "value" : "2020-07-06"
+  },
+  "perfDate" : {
+    "value" : "2020-07-06"
+  },
+  "evtPkt" : [ {
+    "pktSeqNr" : {
+      "value" : "1"
+    },
+    "posId" : {
+      "value" : "124395677"
+    },
+    "qty" : {
+      "value" : "2861.19"
+    },
+    "contSgn" : {
+      "value" : "-1"
+    },
+    "qty3" : {
+      "value" : null
+    },
+    "extlBookText" : {
+      "value" : "Kauf 3'000 / Proton Mtr Pwr Rg\nValoren-Nr.: 2771471 / Referenz-Nr.: 11841062739\nKurs EUR 0.86 / Umrechnungskurs 1.0828"
+    }
+  } ],
+  "versionAtrxSeqNr" : {
+    "value" : "37109841"
+  }
+}

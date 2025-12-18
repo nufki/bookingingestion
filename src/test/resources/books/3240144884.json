@@ -1,0 +1,52 @@
+{
+  "evtId" : {
+    "value" : "3240144884"
+  },
+  "buId" : {
+    "value" : "146"
+  },
+  "evtStatusId" : {
+    "value" : "30"
+  },
+  "pkoId" : {
+    "value" : "1"
+  },
+  "veriDate" : {
+    "value" : "2022-05-10"
+  },
+  "bookDate" : {
+    "value" : "2022-05-10"
+  },
+  "valDate" : {
+    "value" : "2022-05-12"
+  },
+  "trxDate" : {
+    "value" : "2022-05-10"
+  },
+  "perfDate" : {
+    "value" : "2022-05-10"
+  },
+  "evtPkt" : [ {
+    "pktSeqNr" : {
+      "value" : "1"
+    },
+    "posId" : {
+      "value" : "124395677"
+    },
+    "qty" : {
+      "value" : "7901.84"
+    },
+    "contSgn" : {
+      "value" : "-1"
+    },
+    "qty3" : {
+      "value" : null
+    },
+    "extlBookText" : {
+      "value" : "Kauf 500, Plug Power Rg\nValoren-Nr. 13074688, Referenz-Nr. 14012854100\nKurs EUR 14.698, Umrechnungskurs 1.0668"
+    }
+  } ],
+  "versionAtrxSeqNr" : {
+    "value" : "65743579"
+  }
+}

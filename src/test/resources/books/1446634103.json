@@ -1,0 +1,52 @@
+{
+  "evtId" : {
+    "value" : "1446634103"
+  },
+  "buId" : {
+    "value" : "146"
+  },
+  "evtStatusId" : {
+    "value" : "30"
+  },
+  "pkoId" : {
+    "value" : "1"
+  },
+  "veriDate" : {
+    "value" : "2020-07-14"
+  },
+  "bookDate" : {
+    "value" : "2020-07-14"
+  },
+  "valDate" : {
+    "value" : "2020-07-16"
+  },
+  "trxDate" : {
+    "value" : "2020-07-14"
+  },
+  "perfDate" : {
+    "value" : "2020-07-14"
+  },
+  "evtPkt" : [ {
+    "pktSeqNr" : {
+      "value" : "1"
+    },
+    "posId" : {
+      "value" : "124395677"
+    },
+    "qty" : {
+      "value" : "8380.74"
+    },
+    "contSgn" : {
+      "value" : "-1"
+    },
+    "qty3" : {
+      "value" : null
+    },
+    "extlBookText" : {
+      "value" : "Kauf 1'000 / Plug Power Rg\nValoren-Nr.: 13074688 / Referenz-Nr.: 11861809552\nKurs EUR 7.65 / Umrechnungskurs 1.0854"
+    }
+  } ],
+  "versionAtrxSeqNr" : {
+    "value" : "37432888"
+  }
+}

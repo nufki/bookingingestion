@@ -1,0 +1,52 @@
+{
+  "evtId" : {
+    "value" : "2585303745"
+  },
+  "buId" : {
+    "value" : "146"
+  },
+  "evtStatusId" : {
+    "value" : "30"
+  },
+  "pkoId" : {
+    "value" : "1"
+  },
+  "veriDate" : {
+    "value" : "2021-10-04"
+  },
+  "bookDate" : {
+    "value" : "2021-10-04"
+  },
+  "valDate" : {
+    "value" : "2021-10-06"
+  },
+  "trxDate" : {
+    "value" : "2021-10-04"
+  },
+  "perfDate" : {
+    "value" : "2021-10-04"
+  },
+  "evtPkt" : [ {
+    "pktSeqNr" : {
+      "value" : "1"
+    },
+    "posId" : {
+      "value" : "124395677"
+    },
+    "qty" : {
+      "value" : "-1208.21"
+    },
+    "contSgn" : {
+      "value" : "-1"
+    },
+    "qty3" : {
+      "value" : null
+    },
+    "extlBookText" : {
+      "value" : "Verkauf 10'000 / RELIEF THER Hlg N\nValoren-Nr.: 10019113 / Referenz-Nr.: 13246857855\nKurs CHF 0.125"
+    }
+  } ],
+  "versionAtrxSeqNr" : {
+    "value" : "56391305"
+  }
+}

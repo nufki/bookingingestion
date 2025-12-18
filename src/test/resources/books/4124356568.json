@@ -1,0 +1,52 @@
+{
+  "evtId" : {
+    "value" : "4124356568"
+  },
+  "buId" : {
+    "value" : "146"
+  },
+  "evtStatusId" : {
+    "value" : "30"
+  },
+  "pkoId" : {
+    "value" : "1"
+  },
+  "veriDate" : {
+    "value" : "2023-01-30"
+  },
+  "bookDate" : {
+    "value" : "2023-01-30"
+  },
+  "valDate" : {
+    "value" : "2023-01-30"
+  },
+  "trxDate" : {
+    "value" : "2023-01-30"
+  },
+  "perfDate" : {
+    "value" : "2023-01-30"
+  },
+  "evtPkt" : [ {
+    "pktSeqNr" : {
+      "value" : "3"
+    },
+    "posId" : {
+      "value" : "124395677"
+    },
+    "qty" : {
+      "value" : "-5000"
+    },
+    "contSgn" : {
+      "value" : "-1"
+    },
+    "qty3" : {
+      "value" : null
+    },
+    "extlBookText" : {
+      "value" : "E-Banking Auftrag (Kontoübertrag)\nDonald Duck\nMitgliedersparkonto CH47 8080 8004 1355 6903 8"
+    }
+  } ],
+  "versionAtrxSeqNr" : {
+    "value" : "77206243"
+  }
+}

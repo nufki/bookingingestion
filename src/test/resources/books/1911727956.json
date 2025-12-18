@@ -1,0 +1,52 @@
+{
+  "evtId" : {
+    "value" : "1911727956"
+  },
+  "buId" : {
+    "value" : "146"
+  },
+  "evtStatusId" : {
+    "value" : "30"
+  },
+  "pkoId" : {
+    "value" : "1"
+  },
+  "veriDate" : {
+    "value" : "2021-01-20"
+  },
+  "bookDate" : {
+    "value" : "2021-01-20"
+  },
+  "valDate" : {
+    "value" : "2021-01-22"
+  },
+  "trxDate" : {
+    "value" : "2021-01-20"
+  },
+  "perfDate" : {
+    "value" : "2021-01-20"
+  },
+  "evtPkt" : [ {
+    "pktSeqNr" : {
+      "value" : "1"
+    },
+    "posId" : {
+      "value" : "124395677"
+    },
+    "qty" : {
+      "value" : "2744.9"
+    },
+    "contSgn" : {
+      "value" : "-1"
+    },
+    "qty3" : {
+      "value" : null
+    },
+    "extlBookText" : {
+      "value" : "Kauf 1'000 / Newron Pharma N\nValoren-Nr.: 2791431 / Referenz-Nr.: 12426042356\nKurs CHF 2.70"
+    }
+  } ],
+  "versionAtrxSeqNr" : {
+    "value" : "45495223"
+  }
+}

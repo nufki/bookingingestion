@@ -1,0 +1,52 @@
+{
+  "evtId" : {
+    "value" : "2691950026"
+  },
+  "buId" : {
+    "value" : "146"
+  },
+  "evtStatusId" : {
+    "value" : "30"
+  },
+  "pkoId" : {
+    "value" : "1"
+  },
+  "veriDate" : {
+    "value" : "2021-11-11"
+  },
+  "bookDate" : {
+    "value" : "2021-11-11"
+  },
+  "valDate" : {
+    "value" : "2021-11-15"
+  },
+  "trxDate" : {
+    "value" : "2021-11-11"
+  },
+  "perfDate" : {
+    "value" : "2021-11-11"
+  },
+  "evtPkt" : [ {
+    "pktSeqNr" : {
+      "value" : "1"
+    },
+    "posId" : {
+      "value" : "124395677"
+    },
+    "qty" : {
+      "value" : "6695.56"
+    },
+    "contSgn" : {
+      "value" : "-1"
+    },
+    "qty3" : {
+      "value" : null
+    },
+    "extlBookText" : {
+      "value" : "Kauf 1'000 / ITM Power Rg\nValoren-Nr.: 1880756 / Referenz-Nr.: 13369505146\nKurs EUR 6.17 / Umrechnungskurs 1.0732"
+    }
+  } ],
+  "versionAtrxSeqNr" : {
+    "value" : "58010212"
+  }
+}

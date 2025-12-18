@@ -1,0 +1,52 @@
+{
+  "evtId" : {
+    "value" : "1965281928"
+  },
+  "buId" : {
+    "value" : "146"
+  },
+  "evtStatusId" : {
+    "value" : "30"
+  },
+  "pkoId" : {
+    "value" : "1"
+  },
+  "veriDate" : {
+    "value" : "2021-02-15"
+  },
+  "bookDate" : {
+    "value" : "2021-02-15"
+  },
+  "valDate" : {
+    "value" : "2021-02-17"
+  },
+  "trxDate" : {
+    "value" : "2021-02-15"
+  },
+  "perfDate" : {
+    "value" : "2021-02-15"
+  },
+  "evtPkt" : [ {
+    "pktSeqNr" : {
+      "value" : "1"
+    },
+    "posId" : {
+      "value" : "124395677"
+    },
+    "qty" : {
+      "value" : "412.69"
+    },
+    "contSgn" : {
+      "value" : "-1"
+    },
+    "qty3" : {
+      "value" : null
+    },
+    "extlBookText" : {
+      "value" : "Kauf 100'000 / Spineway\nValoren-Nr.: 20622942 / Referenz-Nr.: 12494942099\nKurs EUR 0.0032 / Umrechnungskurs 1.1005"
+    }
+  } ],
+  "versionAtrxSeqNr" : {
+    "value" : "46587800"
+  }
+}

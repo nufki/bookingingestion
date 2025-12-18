@@ -1,0 +1,52 @@
+{
+  "evtId" : {
+    "value" : "1627475336"
+  },
+  "buId" : {
+    "value" : "146"
+  },
+  "evtStatusId" : {
+    "value" : "30"
+  },
+  "pkoId" : {
+    "value" : "1"
+  },
+  "veriDate" : {
+    "value" : "2020-09-29"
+  },
+  "bookDate" : {
+    "value" : "2020-09-29"
+  },
+  "valDate" : {
+    "value" : "2020-09-29"
+  },
+  "trxDate" : {
+    "value" : "2020-09-29"
+  },
+  "perfDate" : {
+    "value" : "2020-06-18"
+  },
+  "evtPkt" : [ {
+    "pktSeqNr" : {
+      "value" : "3"
+    },
+    "posId" : {
+      "value" : "124395677"
+    },
+    "qty" : {
+      "value" : "-46.2"
+    },
+    "contSgn" : {
+      "value" : "-1"
+    },
+    "qty3" : {
+      "value" : null
+    },
+    "extlBookText" : {
+      "value" : "Nennwertreduktion mit Entgelt 1'155 / Myriad Group N \nValoren-Nr.: 1962480 / Referenz-Nr.: 12075351111"
+    }
+  } ],
+  "versionAtrxSeqNr" : {
+    "value" : "40698286"
+  }
+}

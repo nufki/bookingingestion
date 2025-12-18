@@ -27,17 +27,21 @@ class EvtPktRepository(
         val insert = jooq.insertInto(
             EVT_PKT,
             EVT_PKT.EVT_ID,
+            EVT_PKT.PKT_SEQ_NR,
             EVT_PKT.POS_ID,
-            EVT_PKT.BOOK_KIND_ID,
             EVT_PKT.QTY,
+            EVT_PKT.QTY3,
             EVT_PKT.EXTL_BOOK_TEXT
         ).apply {
             packets.forEach { (evtId, pkt) ->
+                val pktSeqNr = pkt.pktSeqNr.toLongOrNull()
+                    ?: throw IllegalArgumentException("pktSeqNr is required")
                 values(
                     evtId,
+                    pktSeqNr,
                     pkt.posId.toLongOrNull(),
-                    pkt.bookKindId.toLongOrNull(),
                     pkt.qty.toBigDecimalOrNull(),
+                    pkt.qty3.toBigDecimalOrNull(),
                     pkt.extlBookText.toStringOrNull()
                 )
             }

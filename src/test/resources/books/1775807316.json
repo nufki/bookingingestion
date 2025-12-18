@@ -1,0 +1,52 @@
+{
+  "evtId" : {
+    "value" : "1775807316"
+  },
+  "buId" : {
+    "value" : "146"
+  },
+  "evtStatusId" : {
+    "value" : "30"
+  },
+  "pkoId" : {
+    "value" : "1"
+  },
+  "veriDate" : {
+    "value" : "2020-12-01"
+  },
+  "bookDate" : {
+    "value" : "2020-12-01"
+  },
+  "valDate" : {
+    "value" : "2020-12-03"
+  },
+  "trxDate" : {
+    "value" : "2020-12-01"
+  },
+  "perfDate" : {
+    "value" : "2020-12-01"
+  },
+  "evtPkt" : [ {
+    "pktSeqNr" : {
+      "value" : "1"
+    },
+    "posId" : {
+      "value" : "124395677"
+    },
+    "qty" : {
+      "value" : "-7181.99"
+    },
+    "contSgn" : {
+      "value" : "-1"
+    },
+    "qty3" : {
+      "value" : null
+    },
+    "extlBookText" : {
+      "value" : "Verkauf 1'000 / Everfuel Rg\nValoren-Nr.: 57950694 / Referenz-Nr.: 12260901090\nKurs EUR 6.80 / Umrechnungskurs 1.0666"
+    }
+  } ],
+  "versionAtrxSeqNr" : {
+    "value" : "43403870"
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "evtId" : {
+    "value" : "1949906391"
+  },
+  "buId" : {
+    "value" : "146"
+  },
+  "evtStatusId" : {
+    "value" : "30"
+  },
+  "pkoId" : {
+    "value" : "1"
+  },
+  "veriDate" : {
+    "value" : "2021-02-05"
+  },
+  "bookDate" : {
+    "value" : "2021-02-05"
+  },
+  "valDate" : {
+    "value" : "2021-02-08"
+  },
+  "trxDate" : {
+    "value" : "2021-02-04"
+  },
+  "perfDate" : {
+    "value" : "2021-02-04"
+  },
+  "evtPkt" : [ {
+    "pktSeqNr" : {
+      "value" : "1"
+    },
+    "posId" : {
+      "value" : "124395677"
+    },
+    "qty" : {
+      "value" : "5665.1"
+    },
+    "contSgn" : {
+      "value" : "-1"
+    },
+    "qty3" : {
+      "value" : null
+    },
+    "extlBookText" : {
+      "value" : "Kauf 3'000 / Clean Power Cap Rg\nValoren-Nr.: 58168776 / Referenz-Nr.: 12474549468\nKurs EUR 1.6952 / Umrechnungskurs 1.1005"
+    }
+  } ],
+  "versionAtrxSeqNr" : {
+    "value" : "46184595"
+  }
+}

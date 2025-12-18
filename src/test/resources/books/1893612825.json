@@ -1,0 +1,52 @@
+{
+  "evtId" : {
+    "value" : "1893612825"
+  },
+  "buId" : {
+    "value" : "146"
+  },
+  "evtStatusId" : {
+    "value" : "30"
+  },
+  "pkoId" : {
+    "value" : "1"
+  },
+  "veriDate" : {
+    "value" : "2021-01-11"
+  },
+  "bookDate" : {
+    "value" : "2021-01-11"
+  },
+  "valDate" : {
+    "value" : "2021-01-13"
+  },
+  "trxDate" : {
+    "value" : "2021-01-11"
+  },
+  "perfDate" : {
+    "value" : "2021-01-11"
+  },
+  "evtPkt" : [ {
+    "pktSeqNr" : {
+      "value" : "1"
+    },
+    "posId" : {
+      "value" : "124395677"
+    },
+    "qty" : {
+      "value" : "7092.91"
+    },
+    "contSgn" : {
+      "value" : "-1"
+    },
+    "qty3" : {
+      "value" : null
+    },
+    "extlBookText" : {
+      "value" : "Kauf 2'000 / NEL Rg\nValoren-Nr.: 1938106 / Referenz-Nr.: 12403057050\nKurs EUR 3.184 / Umrechnungskurs 1.1021"
+    }
+  } ],
+  "versionAtrxSeqNr" : {
+    "value" : "45098647"
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "evtId" : {
+    "value" : "2896160106"
+  },
+  "buId" : {
+    "value" : "146"
+  },
+  "evtStatusId" : {
+    "value" : "30"
+  },
+  "pkoId" : {
+    "value" : "1"
+  },
+  "veriDate" : {
+    "value" : "2022-01-14"
+  },
+  "bookDate" : {
+    "value" : "2022-01-14"
+  },
+  "valDate" : {
+    "value" : "2022-01-18"
+  },
+  "trxDate" : {
+    "value" : "2022-01-14"
+  },
+  "perfDate" : {
+    "value" : "2022-01-14"
+  },
+  "evtPkt" : [ {
+    "pktSeqNr" : {
+      "value" : "1"
+    },
+    "posId" : {
+      "value" : "124395677"
+    },
+    "qty" : {
+      "value" : "-14977.47"
+    },
+    "contSgn" : {
+      "value" : "-1"
+    },
+    "qty3" : {
+      "value" : null
+    },
+    "extlBookText" : {
+      "value" : "Verkauf 700, Plug Power Rg\nValoren-Nr. 13074688, Referenz-Nr. 13607233387\nKurs EUR 21.01, Umrechnungskurs 1.0265"
+    }
+  } ],
+  "versionAtrxSeqNr" : {
+    "value" : "60821014"
+  }
+}

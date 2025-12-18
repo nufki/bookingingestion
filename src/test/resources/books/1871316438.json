@@ -1,0 +1,52 @@
+{
+  "evtId" : {
+    "value" : "1871316438"
+  },
+  "buId" : {
+    "value" : "146"
+  },
+  "evtStatusId" : {
+    "value" : "30"
+  },
+  "pkoId" : {
+    "value" : "1"
+  },
+  "veriDate" : {
+    "value" : "2020-12-31"
+  },
+  "bookDate" : {
+    "value" : "2020-12-31"
+  },
+  "valDate" : {
+    "value" : "2020-12-31"
+  },
+  "trxDate" : {
+    "value" : "2020-12-31"
+  },
+  "perfDate" : {
+    "value" : "2020-12-31"
+  },
+  "evtPkt" : [ {
+    "pktSeqNr" : {
+      "value" : "1"
+    },
+    "posId" : {
+      "value" : "124395677"
+    },
+    "qty" : {
+      "value" : "0"
+    },
+    "contSgn" : {
+      "value" : "-1"
+    },
+    "qty3" : {
+      "value" : null
+    },
+    "extlBookText" : {
+      "value" : "Abschlussbetreffnis  von 14.02.2020 bis 31.12.2020"
+    }
+  } ],
+  "versionAtrxSeqNr" : {
+    "value" : "44711609"
+  }
+}

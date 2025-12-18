@@ -1,0 +1,52 @@
+{
+  "evtId" : {
+    "value" : "1430622614"
+  },
+  "buId" : {
+    "value" : "146"
+  },
+  "evtStatusId" : {
+    "value" : "30"
+  },
+  "pkoId" : {
+    "value" : "1"
+  },
+  "veriDate" : {
+    "value" : "2020-07-07"
+  },
+  "bookDate" : {
+    "value" : "2020-07-07"
+  },
+  "valDate" : {
+    "value" : "2020-07-09"
+  },
+  "trxDate" : {
+    "value" : "2020-07-07"
+  },
+  "perfDate" : {
+    "value" : "2020-07-07"
+  },
+  "evtPkt" : [ {
+    "pktSeqNr" : {
+      "value" : "1"
+    },
+    "posId" : {
+      "value" : "124395677"
+    },
+    "qty" : {
+      "value" : "-26505.12"
+    },
+    "contSgn" : {
+      "value" : "-1"
+    },
+    "qty3" : {
+      "value" : null
+    },
+    "extlBookText" : {
+      "value" : "Verkauf 1'500 / Ballard Power Sy Rg\nValoren-Nr.: 4889034 / Referenz-Nr.: 11842332472\nKurs EUR 17.00 / Umrechnungskurs 1.0483"
+    }
+  } ],
+  "versionAtrxSeqNr" : {
+    "value" : "37139431"
+  }
+}

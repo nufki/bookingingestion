@@ -1,0 +1,52 @@
+{
+  "evtId" : {
+    "value" : "3957513392"
+  },
+  "buId" : {
+    "value" : "146"
+  },
+  "evtStatusId" : {
+    "value" : "30"
+  },
+  "pkoId" : {
+    "value" : "1"
+  },
+  "veriDate" : {
+    "value" : "2022-12-16"
+  },
+  "bookDate" : {
+    "value" : "2022-12-16"
+  },
+  "valDate" : {
+    "value" : "2022-12-16"
+  },
+  "trxDate" : {
+    "value" : "2022-12-16"
+  },
+  "perfDate" : {
+    "value" : "2022-12-16"
+  },
+  "evtPkt" : [ {
+    "pktSeqNr" : {
+      "value" : "1"
+    },
+    "posId" : {
+      "value" : "124395677"
+    },
+    "qty" : {
+      "value" : "134.78"
+    },
+    "contSgn" : {
+      "value" : "-1"
+    },
+    "qty3" : {
+      "value" : null
+    },
+    "extlBookText" : {
+      "value" : "E-Banking Auftrag (Kontoübertrag)\nDonald Duck\nMitglieder-Privatkonto CH16 8080 8002 1227 5877 7"
+    }
+  } ],
+  "versionAtrxSeqNr" : {
+    "value" : "75226743"
+  }
+}

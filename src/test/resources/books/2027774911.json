@@ -1,0 +1,52 @@
+{
+  "evtId" : {
+    "value" : "2027774911"
+  },
+  "buId" : {
+    "value" : "146"
+  },
+  "evtStatusId" : {
+    "value" : "30"
+  },
+  "pkoId" : {
+    "value" : "1"
+  },
+  "veriDate" : {
+    "value" : "2021-03-11"
+  },
+  "bookDate" : {
+    "value" : "2021-03-11"
+  },
+  "valDate" : {
+    "value" : "2021-03-15"
+  },
+  "trxDate" : {
+    "value" : "2021-03-11"
+  },
+  "perfDate" : {
+    "value" : "2021-03-11"
+  },
+  "evtPkt" : [ {
+    "pktSeqNr" : {
+      "value" : "1"
+    },
+    "posId" : {
+      "value" : "124395677"
+    },
+    "qty" : {
+      "value" : "-7560.65"
+    },
+    "contSgn" : {
+      "value" : "-1"
+    },
+    "qty3" : {
+      "value" : null
+    },
+    "extlBookText" : {
+      "value" : "Verkauf 500 / FuelCell Energy Rg\nValoren-Nr.: 47787560 / Referenz-Nr.: 12572549531\nKurs EUR 14.00 / Umrechnungskurs 1.0903"
+    }
+  } ],
+  "versionAtrxSeqNr" : {
+    "value" : "47694343"
+  }
+}

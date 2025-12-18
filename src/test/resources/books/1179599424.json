@@ -1,0 +1,52 @@
+{
+  "evtId" : {
+    "value" : "1179599424"
+  },
+  "buId" : {
+    "value" : "146"
+  },
+  "evtStatusId" : {
+    "value" : "30"
+  },
+  "pkoId" : {
+    "value" : "1"
+  },
+  "veriDate" : {
+    "value" : "2020-03-09"
+  },
+  "bookDate" : {
+    "value" : "2020-03-09"
+  },
+  "valDate" : {
+    "value" : "2020-03-09"
+  },
+  "trxDate" : {
+    "value" : "2020-03-09"
+  },
+  "perfDate" : {
+    "value" : "2020-03-09"
+  },
+  "evtPkt" : [ {
+    "pktSeqNr" : {
+      "value" : "1"
+    },
+    "posId" : {
+      "value" : "124395677"
+    },
+    "qty" : {
+      "value" : "223.82"
+    },
+    "contSgn" : {
+      "value" : "-1"
+    },
+    "qty3" : {
+      "value" : null
+    },
+    "extlBookText" : {
+      "value" : "E-Banking Auftrag (Kontoübertrag)\nDonald Duck\nKonto CH1680808002122758777"
+    }
+  } ],
+  "versionAtrxSeqNr" : {
+    "value" : "32005925"
+  }
+}

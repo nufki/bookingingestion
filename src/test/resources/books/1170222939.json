@@ -1,0 +1,52 @@
+{
+  "evtId" : {
+    "value" : "1170222939"
+  },
+  "buId" : {
+    "value" : "146"
+  },
+  "evtStatusId" : {
+    "value" : "30"
+  },
+  "pkoId" : {
+    "value" : "1"
+  },
+  "veriDate" : {
+    "value" : "2020-03-04"
+  },
+  "bookDate" : {
+    "value" : "2020-03-04"
+  },
+  "valDate" : {
+    "value" : "2020-03-06"
+  },
+  "trxDate" : {
+    "value" : "2020-03-04"
+  },
+  "perfDate" : {
+    "value" : "2020-03-04"
+  },
+  "evtPkt" : [ {
+    "pktSeqNr" : {
+      "value" : "1"
+    },
+    "posId" : {
+      "value" : "124395677"
+    },
+    "qty" : {
+      "value" : "-2223.82"
+    },
+    "contSgn" : {
+      "value" : "-1"
+    },
+    "qty3" : {
+      "value" : null
+    },
+    "extlBookText" : {
+      "value" : "Verkauf 2'000 / NEL Rg\nValoren-Nr.: 1938106 / Referenz-Nr.: 11524276313\nKurs EUR 1.09 / Umrechnungskurs 1.0492"
+    }
+  } ],
+  "versionAtrxSeqNr" : {
+    "value" : "31809035"
+  }
+}

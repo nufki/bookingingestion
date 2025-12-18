@@ -1,0 +1,52 @@
+{
+  "evtId" : {
+    "value" : "7144920066"
+  },
+  "buId" : {
+    "value" : "146"
+  },
+  "evtStatusId" : {
+    "value" : "30"
+  },
+  "pkoId" : {
+    "value" : "1"
+  },
+  "veriDate" : {
+    "value" : "2025-03-04"
+  },
+  "bookDate" : {
+    "value" : "2025-03-04"
+  },
+  "valDate" : {
+    "value" : "2025-03-04"
+  },
+  "trxDate" : {
+    "value" : "2025-03-04"
+  },
+  "perfDate" : {
+    "value" : "2025-03-04"
+  },
+  "evtPkt" : [ {
+    "pktSeqNr" : {
+      "value" : "1"
+    },
+    "posId" : {
+      "value" : "124395677"
+    },
+    "qty" : {
+      "value" : "4651.5"
+    },
+    "contSgn" : {
+      "value" : "-1"
+    },
+    "qty3" : {
+      "value" : null
+    },
+    "extlBookText" : {
+      "value" : "Übertrag auf Mitgliedersparkonto CH47 8080 8004 1355 6903 8"
+    }
+  } ],
+  "versionAtrxSeqNr" : {
+    "value" : "111901012"
+  }
+}

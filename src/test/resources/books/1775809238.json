@@ -1,0 +1,52 @@
+{
+  "evtId" : {
+    "value" : "1775809238"
+  },
+  "buId" : {
+    "value" : "146"
+  },
+  "evtStatusId" : {
+    "value" : "30"
+  },
+  "pkoId" : {
+    "value" : "1"
+  },
+  "veriDate" : {
+    "value" : "2020-12-01"
+  },
+  "bookDate" : {
+    "value" : "2020-12-01"
+  },
+  "valDate" : {
+    "value" : "2020-12-03"
+  },
+  "trxDate" : {
+    "value" : "2020-12-01"
+  },
+  "perfDate" : {
+    "value" : "2020-12-01"
+  },
+  "evtPkt" : [ {
+    "pktSeqNr" : {
+      "value" : "1"
+    },
+    "posId" : {
+      "value" : "124395677"
+    },
+    "qty" : {
+      "value" : "-7743.3"
+    },
+    "contSgn" : {
+      "value" : "-1"
+    },
+    "qty3" : {
+      "value" : null
+    },
+    "extlBookText" : {
+      "value" : "Verkauf 600 / UBS Group N\nValoren-Nr.: 24476758 / Referenz-Nr.: 12260903623\nKurs CHF 13.00"
+    }
+  } ],
+  "versionAtrxSeqNr" : {
+    "value" : "43427756"
+  }
+}

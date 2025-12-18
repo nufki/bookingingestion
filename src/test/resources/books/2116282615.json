@@ -1,0 +1,52 @@
+{
+  "evtId" : {
+    "value" : "2116282615"
+  },
+  "buId" : {
+    "value" : "146"
+  },
+  "evtStatusId" : {
+    "value" : "30"
+  },
+  "pkoId" : {
+    "value" : "1"
+  },
+  "veriDate" : {
+    "value" : "2021-04-16"
+  },
+  "bookDate" : {
+    "value" : "2021-04-16"
+  },
+  "valDate" : {
+    "value" : "2021-04-20"
+  },
+  "trxDate" : {
+    "value" : "2021-04-16"
+  },
+  "perfDate" : {
+    "value" : "2021-04-16"
+  },
+  "evtPkt" : [ {
+    "pktSeqNr" : {
+      "value" : "1"
+    },
+    "posId" : {
+      "value" : "124395677"
+    },
+    "qty" : {
+      "value" : "-14274.97"
+    },
+    "contSgn" : {
+      "value" : "-1"
+    },
+    "qty3" : {
+      "value" : null
+    },
+    "extlBookText" : {
+      "value" : "Verkauf 600 / Plug Power Rg\nValoren-Nr.: 13074688 / Referenz-Nr.: 12687865870\nKurs EUR 22.135 / Umrechnungskurs 1.0834"
+    }
+  } ],
+  "versionAtrxSeqNr" : {
+    "value" : "49246793"
+  }
+}

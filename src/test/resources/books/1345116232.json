@@ -1,0 +1,52 @@
+{
+  "evtId" : {
+    "value" : "1345116232"
+  },
+  "buId" : {
+    "value" : "146"
+  },
+  "evtStatusId" : {
+    "value" : "30"
+  },
+  "pkoId" : {
+    "value" : "1"
+  },
+  "veriDate" : {
+    "value" : "2020-06-03"
+  },
+  "bookDate" : {
+    "value" : "2020-06-03"
+  },
+  "valDate" : {
+    "value" : "2020-06-05"
+  },
+  "trxDate" : {
+    "value" : "2020-06-03"
+  },
+  "perfDate" : {
+    "value" : "2020-06-03"
+  },
+  "evtPkt" : [ {
+    "pktSeqNr" : {
+      "value" : "1"
+    },
+    "posId" : {
+      "value" : "124395677"
+    },
+    "qty" : {
+      "value" : "-6334.05"
+    },
+    "contSgn" : {
+      "value" : "-1"
+    },
+    "qty3" : {
+      "value" : null
+    },
+    "extlBookText" : {
+      "value" : "Verkauf 889 / Westwing Group Br\nValoren-Nr.: 43911063 / Referenz-Nr.: 11737075566\nKurs EUR 6.80 / Umrechnungskurs 1.0594"
+    }
+  } ],
+  "versionAtrxSeqNr" : {
+    "value" : "35676629"
+  }
+}

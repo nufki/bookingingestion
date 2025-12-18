@@ -1,0 +1,52 @@
+{
+  "evtId" : {
+    "value" : "6899093080"
+  },
+  "buId" : {
+    "value" : "146"
+  },
+  "evtStatusId" : {
+    "value" : "30"
+  },
+  "pkoId" : {
+    "value" : "1"
+  },
+  "veriDate" : {
+    "value" : "2025-01-06"
+  },
+  "bookDate" : {
+    "value" : "2025-01-06"
+  },
+  "valDate" : {
+    "value" : "2025-01-06"
+  },
+  "trxDate" : {
+    "value" : "2025-01-06"
+  },
+  "perfDate" : {
+    "value" : "2025-01-06"
+  },
+  "evtPkt" : [ {
+    "pktSeqNr" : {
+      "value" : "1"
+    },
+    "posId" : {
+      "value" : "124395677"
+    },
+    "qty" : {
+      "value" : "204.82"
+    },
+    "contSgn" : {
+      "value" : "-1"
+    },
+    "qty3" : {
+      "value" : null
+    },
+    "extlBookText" : {
+      "value" : "Übertrag auf Mitglieder-Privatkonto CH16 8080 8002 1227 5877 7"
+    }
+  } ],
+  "versionAtrxSeqNr" : {
+    "value" : "108977919"
+  }
+}

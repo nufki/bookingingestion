@@ -1,0 +1,52 @@
+{
+  "evtId" : {
+    "value" : "6829675900"
+  },
+  "buId" : {
+    "value" : "146"
+  },
+  "evtStatusId" : {
+    "value" : "30"
+  },
+  "pkoId" : {
+    "value" : "1"
+  },
+  "veriDate" : {
+    "value" : "2024-12-24"
+  },
+  "bookDate" : {
+    "value" : "2024-12-24"
+  },
+  "valDate" : {
+    "value" : "2024-12-23"
+  },
+  "trxDate" : {
+    "value" : "2024-12-23"
+  },
+  "perfDate" : {
+    "value" : "2024-12-23"
+  },
+  "evtPkt" : [ {
+    "pktSeqNr" : {
+      "value" : "3"
+    },
+    "posId" : {
+      "value" : "124395677"
+    },
+    "qty" : {
+      "value" : "-504.82"
+    },
+    "contSgn" : {
+      "value" : "-1"
+    },
+    "qty3" : {
+      "value" : null
+    },
+    "extlBookText" : {
+      "value" : "Fusion gegen bar 500, Everfuel Rg \nValoren-Nr. 57950694, Referenz-Nr. 18009844809\nDevisenkurs 7.7665"
+    }
+  } ],
+  "versionAtrxSeqNr" : {
+    "value" : "108472780"
+  }
+}

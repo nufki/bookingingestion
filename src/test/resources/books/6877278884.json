@@ -1,0 +1,52 @@
+{
+  "evtId" : {
+    "value" : "6877278884"
+  },
+  "buId" : {
+    "value" : "146"
+  },
+  "evtStatusId" : {
+    "value" : "30"
+  },
+  "pkoId" : {
+    "value" : "1"
+  },
+  "veriDate" : {
+    "value" : "2024-12-31"
+  },
+  "bookDate" : {
+    "value" : "2024-12-31"
+  },
+  "valDate" : {
+    "value" : "2024-12-31"
+  },
+  "trxDate" : {
+    "value" : "2024-12-31"
+  },
+  "perfDate" : {
+    "value" : "2024-12-31"
+  },
+  "evtPkt" : [ {
+    "pktSeqNr" : {
+      "value" : "1"
+    },
+    "posId" : {
+      "value" : "124395677"
+    },
+    "qty" : {
+      "value" : "0"
+    },
+    "contSgn" : {
+      "value" : "-1"
+    },
+    "qty3" : {
+      "value" : null
+    },
+    "extlBookText" : {
+      "value" : "Abschlussbetreffnis  von 31.12.2023 bis 31.12.2024"
+    }
+  } ],
+  "versionAtrxSeqNr" : {
+    "value" : "108801853"
+  }
+}

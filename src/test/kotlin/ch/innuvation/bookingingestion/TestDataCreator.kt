@@ -9,23 +9,6 @@ import org.apache.kafka.common.serialization.StringSerializer
 import org.springframework.core.io.ClassPathResource
 import java.util.*
 
-/*
-fun main() {
-    val byteArrayProducer = getKafkaProducer<ByteArray>()
-
-    ClassPathResource("books").file.listFiles()!!.forEach {
-        val bookMsg = getProtobufFromJson(it, Books.newBuilder()).build()
-        byteArrayProducer
-            .send(
-                ProducerRecord(
-                    "com.avaloq.acp.bde.books",
-                    bookMsg.evtId.toString(),
-                    bookMsg.toByteString().toByteArray(),
-                ),
-            ).get()
-    }
-}
-*/
 
 fun main() {
     val producer = createBooksProducer()

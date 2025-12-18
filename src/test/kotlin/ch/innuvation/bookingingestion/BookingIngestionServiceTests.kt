@@ -22,36 +22,6 @@ import org.springframework.test.context.TestPropertySource
 class BookingIngestionServiceTests : IntegrationTest() {
 
 
-    companion object {
-        @Container
-        private val mysql: MySQLContainer<*> = MySQLContainer(DockerImageName.parse("mysql:8.4"))
-            .withDatabaseName("BOOKING_INGESTION_DB")
-            .withUsername("books")
-            .withPassword("books")
-            .withReuse(true)
-
-        @JvmStatic
-        @BeforeAll
-        fun initContainer() {
-            // ensures container is started before tests run
-            if (!mysql.isRunning) {
-                mysql.start()
-            }
-        }
-
-        @JvmStatic
-        @DynamicPropertySource
-        fun registerProps(registry: DynamicPropertyRegistry) {
-            registry.add("spring.datasource.url") { mysql.jdbcUrl }
-            registry.add("spring.datasource.username") { mysql.username }
-            registry.add("spring.datasource.password") { mysql.password }
-            registry.add("spring.flyway.url") { mysql.jdbcUrl }
-            registry.add("spring.flyway.user") { mysql.username }
-            registry.add("spring.flyway.password") { mysql.password }
-            registry.add("spring.kafka.listener.auto-startup") { false }
-        }
-    }
-
     @Test
     fun `ingests protobuf books into MySQL`() {
         val messages = loadBooksMessages()

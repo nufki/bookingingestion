@@ -1,10 +1,12 @@
 package ch.innuvation.bookingingestion
 
 import ch.innuvation.bookingingestion.config.BookingIngestionServiceProperties
+import ch.innuvation.bookingingestion.config.TestcontainerTestExecutionListener
 import ch.innuvation.bookingingestion.jooq.tables.references.BOOKS
 import ch.innuvation.bookingingestion.jooq.tables.references.EVT_PKT
 import ch.innuvation.bookingingestion.kafka.BooksKafkaListener
 import ch.innuvation.bookingingestion.service.BookingIngestionService
+import ch.innuvation.bookingingestion.utils.Profiles
 import com.avaloq.acp.bde.protobuf.books.Books
 import org.assertj.core.api.Assertions.assertThat
 import org.jooq.DSLContext
@@ -15,48 +17,23 @@ import org.springframework.kafka.config.KafkaListenerEndpointRegistry
 import org.springframework.kafka.core.KafkaTemplate
 import org.springframework.kafka.test.context.EmbeddedKafka
 import org.springframework.test.context.ActiveProfiles
-import org.springframework.test.context.DynamicPropertyRegistry
-import org.springframework.test.context.DynamicPropertySource
-import org.testcontainers.containers.MySQLContainer
-import org.testcontainers.junit.jupiter.Container
-import org.testcontainers.junit.jupiter.Testcontainers
-import org.testcontainers.utility.DockerImageName
+import org.springframework.test.context.TestExecutionListeners
+import org.springframework.test.context.event.ApplicationEventsTestExecutionListener
 
-@Testcontainers
+@TestExecutionListeners(
+    listeners = [
+        TestcontainerTestExecutionListener::class,
+        ApplicationEventsTestExecutionListener::class,
+    ],
+    mergeMode = TestExecutionListeners.MergeMode.MERGE_WITH_DEFAULTS,
+)
 @EmbeddedKafka(
     kraft = true,
     brokerProperties = ["auto.create.topics.enable=false"]
 )
-@ActiveProfiles("test")
+@ActiveProfiles(Profiles.TEST)
 @SpringBootTest
 abstract class IntegrationTest {
-    
-    companion object {
-        @Container
-        private val mysql: MySQLContainer<*> = MySQLContainer(DockerImageName.parse("mysql:8.4"))
-            .withDatabaseName("BOOKING_INGESTION_DB")
-            .withUsername("books")
-            .withPassword("books")
-            .withReuse(true)
-
-        @JvmStatic
-        @DynamicPropertySource
-        fun registerProps(registry: DynamicPropertyRegistry) {
-            registry.add("spring.datasource.url") { mysql.jdbcUrl }
-            registry.add("spring.datasource.username") { mysql.username }
-            registry.add("spring.datasource.password") { mysql.password }
-            registry.add("spring.flyway.url") { mysql.jdbcUrl }
-            registry.add("spring.flyway.user") { mysql.username }
-            registry.add("spring.flyway.password") { mysql.password }
-        }
-
-        @JvmStatic
-        fun initContainer() {
-            if (!mysql.isRunning) {
-                mysql.start()
-            }
-        }
-    }
 
     @Autowired
     @Qualifier("protobufKafkaTemplate")

@@ -16,8 +16,5 @@ spring:
     url: jdbc:mysql://localhost:3306/BOOKING_INGESTION_DB?useSSL=false&serverTimezone=UTC
     username: books
     password: books
-  flyway:
-    url: jdbc:mysql://localhost:3306/BOOKING_INGESTION_DB
-    user: ${spring.datasource.username}
-    password: ${spring.datasource.password}
+
 

@@ -7,11 +7,11 @@ spring:
     virtual:
       enabled: true
   datasource:
-    url: jdbc:mysql://localhost:3306/BOOKING_INGESTION_DB?useSSL=false&serverTimezone=UTC
+    url: jdbc:oracle:thin:@localhost:1521/freepdb1
     username: books
     password: books
   flyway:
-    url: jdbc:mysql://localhost:3306/BOOKING_INGESTION_DB
+    url: jdbc:oracle:thin:@localhost:1521/freepdb1
     user: ${spring.datasource.username}
     password: ${spring.datasource.password}
   kafka:

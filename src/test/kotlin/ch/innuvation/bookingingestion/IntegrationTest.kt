@@ -2,23 +2,26 @@ package ch.innuvation.bookingingestion
 
 import ch.innuvation.bookingingestion.config.BookingIngestionServiceProperties
 import ch.innuvation.bookingingestion.config.TestcontainerTestExecutionListener
-import ch.innuvation.bookingingestion.jooq.tables.references.BOOKS
-import ch.innuvation.bookingingestion.jooq.tables.references.EVT_PKT
 import ch.innuvation.bookingingestion.kafka.BooksKafkaListener
 import ch.innuvation.bookingingestion.service.BookingIngestionService
 import ch.innuvation.bookingingestion.utils.Profiles
 import com.avaloq.acp.bde.protobuf.books.Books
 import org.assertj.core.api.Assertions.assertThat
-import org.jooq.DSLContext
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.beans.factory.annotation.Qualifier
 import org.springframework.boot.test.context.SpringBootTest
+import org.springframework.jdbc.core.JdbcTemplate
 import org.springframework.kafka.config.KafkaListenerEndpointRegistry
 import org.springframework.kafka.core.KafkaTemplate
 import org.springframework.kafka.test.context.EmbeddedKafka
 import org.springframework.test.context.ActiveProfiles
+import javax.sql.DataSource
+import org.slf4j.LoggerFactory
 import org.springframework.test.context.TestExecutionListeners
 import org.springframework.test.context.event.ApplicationEventsTestExecutionListener
+
+private val log = LoggerFactory.getLogger("oracle-tc")
+
 
 @TestExecutionListeners(
     listeners = [
@@ -43,7 +46,9 @@ abstract class IntegrationTest {
     protected lateinit var kafkaListenerEndpointRegistry: KafkaListenerEndpointRegistry
 
     @Autowired
-    protected lateinit var jooq: DSLContext
+    protected lateinit var dataSource: DataSource
+
+    protected val jdbcTemplate: JdbcTemplate by lazy { JdbcTemplate(dataSource) }
 
     @Autowired
     protected lateinit var properties: BookingIngestionServiceProperties
@@ -61,33 +66,32 @@ abstract class IntegrationTest {
     protected fun awaitBooksCount(expectedCount: Int, timeoutSeconds: Long = 10) {
         val startTime = System.currentTimeMillis()
         while (System.currentTimeMillis() - startTime < timeoutSeconds * 1000) {
-            val count = jooq.fetchCount(BOOKS)
+            val count = jdbcTemplate.queryForObject("SELECT COUNT(*) FROM BOOKS", Int::class.java) ?: 0
             if (count == expectedCount) {
                 return
             }
             Thread.sleep(100)
         }
-        val actualCount = jooq.fetchCount(BOOKS)
+        val actualCount = jdbcTemplate.queryForObject("SELECT COUNT(*) FROM BOOKS", Int::class.java) ?: 0
         assertThat(actualCount).`as`("Expected $expectedCount books but found $actualCount").isEqualTo(expectedCount)
     }
 
     protected fun awaitEvtPktCount(expectedCount: Int, timeoutSeconds: Long = 10) {
         val startTime = System.currentTimeMillis()
         while (System.currentTimeMillis() - startTime < timeoutSeconds * 1000) {
-            val count = jooq.fetchCount(EVT_PKT)
+            val count = jdbcTemplate.queryForObject("SELECT COUNT(*) FROM EVT_PKT", Int::class.java) ?: 0
             if (count == expectedCount) {
                 return
             }
             Thread.sleep(100)
         }
-        val actualCount = jooq.fetchCount(EVT_PKT)
+        val actualCount = jdbcTemplate.queryForObject("SELECT COUNT(*) FROM EVT_PKT", Int::class.java) ?: 0
         assertThat(actualCount).`as`("Expected $expectedCount evt_pkt rows but found $actualCount").isEqualTo(expectedCount)
     }
 
     protected fun cleanupDatabase() {
         // Delete in order to respect foreign key constraints (if any)
-        jooq.deleteFrom(EVT_PKT).execute()
-        jooq.deleteFrom(BOOKS).execute()
+        jdbcTemplate.update("DELETE FROM EVT_PKT")
+        jdbcTemplate.update("DELETE FROM BOOKS")
     }
 }
-

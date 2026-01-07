@@ -1,16 +1,16 @@
 package ch.innuvation.bookingingestion
 
-import ch.innuvation.bookingingestion.jooq.tables.references.BOOKS
-import ch.innuvation.bookingingestion.jooq.tables.references.EVT_PKT
 import ch.innuvation.bookingingestion.proto.toLongOrNull
 import com.avaloq.acp.bde.protobuf.books.Books
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.springframework.core.io.ClassPathResource
+import org.springframework.jdbc.core.JdbcTemplate
 import org.springframework.kafka.config.KafkaListenerEndpointRegistry
 import org.springframework.kafka.test.utils.ContainerTestUtils
 import java.io.File
+import java.math.BigDecimal
 
 class BooksKafkaListenerTest : IntegrationTest() {
 
@@ -18,7 +18,7 @@ class BooksKafkaListenerTest : IntegrationTest() {
     fun setUp() {
         // Clean database before each test
         cleanupDatabase()
-        
+
         // Wait for listener to be assigned partitions
         val listenerContainer = kafkaListenerEndpointRegistry.getListenerContainer("books-listener")
         listenerContainer?.let {
@@ -53,17 +53,21 @@ class BooksKafkaListenerTest : IntegrationTest() {
             val evtId = book.evtId.toLongOrNull()
             assertThat(evtId).isNotNull
 
-            val bookRecord = jooq.selectFrom(BOOKS)
-                .where(BOOKS.EVT_ID.eq(evtId))
-                .fetchOne()
+            val bookRecord = jdbcTemplate.queryForMap(
+                "SELECT * FROM BOOKS WHERE EVT_ID = ?",
+                evtId
+            )
 
             assertThat(bookRecord).isNotNull
-            assertThat(bookRecord!![BOOKS.EVT_ID]).isEqualTo(evtId)
+            // Oracle JDBC returns BigDecimal for numeric columns
+            val actualEvtId = (bookRecord["EVT_ID"] as? BigDecimal)?.toLong()
+            assertThat(actualEvtId).isEqualTo(evtId)
 
             // Verify EVT_PKT records for this book
-            val evtPktRecords = jooq.selectFrom(EVT_PKT)
-                .where(EVT_PKT.EVT_ID.eq(evtId))
-                .fetch()
+            val evtPktRecords = jdbcTemplate.queryForList(
+                "SELECT * FROM EVT_PKT WHERE EVT_ID = ?",
+                evtId
+            )
 
             assertThat(evtPktRecords.size).isEqualTo(book.evtPktList.size)
         }
@@ -95,26 +99,29 @@ class BooksKafkaListenerTest : IntegrationTest() {
         assertThat(messages).isNotEmpty
         val firstMessage = messages.first()
 
-        val evtId = firstMessage.evtId.toString()
+        val evtIdString = firstMessage.evtId.toString()
 
         // Send message first time
-        sendBooksMessage(evtId, firstMessage)
+        sendBooksMessage(evtIdString, firstMessage)
         Thread.sleep(1000)
 
         awaitBooksCount(1)
 
         // Send same message again (should upsert, not create duplicate)
-        sendBooksMessage(evtId, firstMessage)
+        sendBooksMessage(evtIdString, firstMessage)
         Thread.sleep(1000)
 
         // Should still have only one record
-        val bookCount = jooq.fetchCount(BOOKS)
+        val bookCount = jdbcTemplate.queryForObject("SELECT COUNT(*) FROM BOOKS", Int::class.java) ?: 0
         assertThat(bookCount).isEqualTo(1)
 
         // Verify the record exists
-        val bookRecord = jooq.selectFrom(BOOKS)
-            .where(BOOKS.EVT_ID.eq(firstMessage.evtId.toLongOrNull()))
-            .fetchOne()
+        val evtId = firstMessage.evtId.toLongOrNull()
+        assertThat(evtId).isNotNull
+        val bookRecord = jdbcTemplate.queryForMap(
+            "SELECT * FROM BOOKS WHERE EVT_ID = ?",
+            evtId
+        )
 
         assertThat(bookRecord).isNotNull
     }
@@ -127,4 +134,3 @@ class BooksKafkaListenerTest : IntegrationTest() {
         } ?: emptyList()
     }
 }
-

@@ -1,35 +1,20 @@
 package ch.innuvation.bookingingestion
 
-import ch.innuvation.bookingingestion.jooq.tables.references.BOOKS
-import ch.innuvation.bookingingestion.jooq.tables.references.EVT_PKT
-import ch.innuvation.bookingingestion.service.BookingIngestionService
 import com.avaloq.acp.bde.protobuf.books.Books
-import org.jooq.DSLContext
 import org.junit.jupiter.api.Assertions.assertEquals
-import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.Test
-import org.springframework.boot.test.context.SpringBootTest
-import org.springframework.test.context.ActiveProfiles
-import org.springframework.test.context.DynamicPropertyRegistry
-import org.springframework.test.context.DynamicPropertySource
-import org.testcontainers.junit.jupiter.Container
-import org.testcontainers.junit.jupiter.Testcontainers
-import org.testcontainers.utility.DockerImageName
-import org.testcontainers.containers.MySQLContainer
-import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.test.context.TestPropertySource
 
 class BookingIngestionServiceTests : IntegrationTest() {
 
 
     @Test
-    fun `ingests protobuf books into MySQL`() {
+    fun `ingests protobuf books into Oracle`() {
         val messages = loadBooksMessages()
 
         bookingIngestionService.ingestBatch(messages)
 
-        val bookCount = jooq.fetchCount(BOOKS)
-        val evtPktCount = jooq.fetchCount(EVT_PKT)
+        val bookCount = jdbcTemplate.queryForObject("SELECT COUNT(*) FROM BOOKS", Int::class.java) ?: 0
+        val evtPktCount = jdbcTemplate.queryForObject("SELECT COUNT(*) FROM EVT_PKT", Int::class.java) ?: 0
         val expectedEvtPkts = messages.sumOf { it.evtPktList.size }
 
         assertEquals(messages.size, bookCount, "book rows")

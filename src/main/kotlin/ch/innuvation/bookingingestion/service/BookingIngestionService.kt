@@ -14,35 +14,31 @@ class BookingIngestionService(
     private val booksRepository: BooksRepository,
     private val evtPktRepository: EvtPktRepository,
 ) {
-
     private val log = logger()
 
-    /**
-     * Ingest a batch of Books messages (no tombstones).
-     */
     @Transactional
-    fun ingestBatch(booksMessages: List<Books>) {
+    fun ingestBatch(booksMessages: List<Books>, tombstoneKeys: List<String>) {
+        // 1) Handle deletions first (tombstones)
+        if (tombstoneKeys.isNotEmpty()) {
+            val evtIdsToDelete = tombstoneKeys.mapNotNull { it.toLongOrNull() }
+            booksRepository.deleteBatch(evtIdsToDelete)
+            log.info("Deleted ${evtIdsToDelete.size} BOOKS records (and cascaded EVT_PKT)")
+        }
+
+        // 2) Handle upserts
         if (booksMessages.isEmpty()) return
 
-        // 1) upsert all BOOKS rows in one shot
         booksRepository.upsertBatch(booksMessages)
 
-        // 2) collect all EVT_PKT rows (evtId + pkt)
         val allPackets: List<Pair<Long, EvtPkt>> =
             booksMessages.flatMap { msg ->
                 val evtId = msg.evtId.toLongOrNull()
                     ?: throw IllegalArgumentException("evtId is required")
-
-                msg.evtPktList.map { pkt -> evtId to pkt }
+                msg.evtPktList.map { evtId to it }
             }
 
-        // 3) upsert all EVT_PKT rows in one shot
         evtPktRepository.upsertBatch(allPackets)
 
-        if (log.isDebugEnabled) {
-            log.debug(
-                "Ingested ${booksMessages.size} Books and ${allPackets.size} EVT_PKT rows"
-            )
-        }
+        log.info("Upserted ${booksMessages.size} BOOKS and ${allPackets.size} EVT_PKT rows")
     }
 }

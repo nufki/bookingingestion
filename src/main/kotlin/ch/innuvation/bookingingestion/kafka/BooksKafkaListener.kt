@@ -12,7 +12,6 @@ import org.springframework.stereotype.Component
 class BooksKafkaListener(
     private val bookingIngestionService: BookingIngestionService
 ) {
-
     private val log = LoggerFactory.getLogger(javaClass)
 
     @KafkaListener(
@@ -25,14 +24,15 @@ class BooksKafkaListener(
     fun consumeBooks(records: List<ConsumerRecord<String, Books?>>) {
         log.info("Received batch of ${records.size} Books messages")
 
+        // Separate tombstones from actual messages
+        val tombstones = records.filter { it.value() == null }.map { it.key() }
+        val messages = records.mapNotNull { it.value() }
 
-        val messages = records
-            .mapNotNull { it.value() }   // no tombstones, but just to be safe
         try {
-            bookingIngestionService.ingestBatch(messages)
+            bookingIngestionService.ingestBatch(messages, tombstones)
         } catch (e: Exception) {
-            log.error("Error ingesting batch of Books; size=${messages.size}", e)
-            // optional: DLQ / retry
+            log.error("Error ingesting batch: messages=${messages.size}, tombstones=${tombstones.size}", e)
+            throw e
         }
     }
 }

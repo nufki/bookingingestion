@@ -14,12 +14,12 @@ fun Wrappers.StringValue?.toBigDecimalOrNull(): BigDecimal? =
         ?.let { runCatching { BigDecimal(it) }.getOrNull() }
 
 fun Wrappers.StringValue?.toLocalDateOrNull(): LocalDate? =
-    this?.value?.let { LocalDate.parse(it) }
+    this?.value
+        ?.takeIf { it.isNotBlank() }
+        ?.let { runCatching { LocalDate.parse(it) }.getOrNull() }
 
 fun Wrappers.StringValue?.toStringOrNull(): String? =
     this?.value
-
-fun String.toLongOrNull(): Long? = this.toLongOrNull()
 
 fun String.toLocalDateOrNull(pattern: String = "yyyy-MM-dd"): LocalDate? =
     runCatching { LocalDate.parse(this, DateTimeFormatter.ofPattern(pattern)) }.getOrNull()

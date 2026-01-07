@@ -6,9 +6,11 @@ import ch.innuvation.bookingingestion.proto.toStringOrNull
 import ch.innuvation.bookingingestion.utils.logger
 import com.avaloq.acp.bde.protobuf.books.EvtPkt
 import org.springframework.dao.DataAccessException
+import org.springframework.jdbc.core.BatchPreparedStatementSetter
 import org.springframework.jdbc.core.JdbcTemplate
 import org.springframework.stereotype.Repository
 import java.math.BigDecimal
+import java.sql.PreparedStatement
 import javax.sql.DataSource
 
 @Repository

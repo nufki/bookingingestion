@@ -1,26 +1,30 @@
-CREATE TABLE BOOKS (
-    EVT_ID        NUMBER(19)      NOT NULL,
-    BU_ID         NUMBER(19)      NULL,
-    EVT_STATUS_ID NUMBER(19)      NULL,
-    VERI_DATE     DATE            NULL,
-    BOOK_DATE     DATE            NULL,
-    VAL_DATE      DATE            NULL,
-    TRX_DATE      DATE            NULL,
-    PERF_DATE     DATE            NULL,
+CREATE TABLE BOOKS
+(
+    EVT_ID        NUMBER(19) NOT NULL,
+    BU_ID         NUMBER(19) NULL,
+    EVT_STATUS_ID NUMBER(19) NULL,
+    VERI_DATE     DATE       NULL,
+    BOOK_DATE     DATE       NULL,
+    VAL_DATE      DATE       NULL,
+    TRX_DATE      DATE       NULL,
+    PERF_DATE     DATE       NULL,
     PRIMARY KEY (EVT_ID)
 );
 
-CREATE TABLE EVT_PKT (
-    ID             NUMBER(19)      NOT NULL,
-    EVT_ID         NUMBER(19)      NOT NULL,
-    PKT_SEQ_NR     NUMBER(19)      NOT NULL,
-    POS_ID         NUMBER(19)      NULL,
-    QTY            NUMBER(38,10)   NULL,
-    QTY3           NUMBER(38,10)   NULL,
-    EXTL_BOOK_TEXT VARCHAR2(4000)  NULL,
+CREATE TABLE EVT_PKT
+(
+    ID             NUMBER(19)     NOT NULL,
+    EVT_ID         NUMBER(19)     NOT NULL,
+    PKT_SEQ_NR     NUMBER(19)     NOT NULL,
+    POS_ID         NUMBER(19)     NULL,
+    QTY            NUMBER(38, 10) NULL,
+    QTY3           NUMBER(38, 10) NULL,
+    EXTL_BOOK_TEXT VARCHAR2(4000) NULL,
     PRIMARY KEY (ID),
     CONSTRAINT FK_EVT_PKT_BOOKS
-        FOREIGN KEY (EVT_ID) REFERENCES BOOKS (EVT_ID),
+        FOREIGN KEY (EVT_ID)
+            REFERENCES BOOKS (EVT_ID)
+                ON DELETE CASCADE,
     CONSTRAINT UK_EVT_PKT_EVT_ID_PKT_SEQ_NR
         UNIQUE (EVT_ID, PKT_SEQ_NR)
 );
@@ -30,7 +34,8 @@ CREATE SEQUENCE EVT_PKT_ID_SEQ START WITH 1 INCREMENT BY 1;
 
 -- Create trigger to auto-increment ID
 CREATE OR REPLACE TRIGGER EVT_PKT_ID_TRG
-    BEFORE INSERT ON EVT_PKT
+    BEFORE INSERT
+    ON EVT_PKT
     FOR EACH ROW
     WHEN (NEW.ID IS NULL)
 BEGIN

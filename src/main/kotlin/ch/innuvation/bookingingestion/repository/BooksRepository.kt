@@ -5,9 +5,11 @@ import ch.innuvation.bookingingestion.proto.toLongOrNull
 import ch.innuvation.bookingingestion.utils.logger
 import com.avaloq.acp.bde.protobuf.books.Books
 import org.springframework.dao.DataAccessException
+import org.springframework.jdbc.core.BatchPreparedStatementSetter
 import org.springframework.jdbc.core.JdbcTemplate
 import org.springframework.stereotype.Repository
 import java.sql.Date
+import java.sql.PreparedStatement
 import javax.sql.DataSource
 
 @Repository
@@ -16,6 +18,69 @@ class BooksRepository(
 ) {
     private val jdbcTemplate = JdbcTemplate(dataSource)
     private val log = logger()
+
+    /*
+    fun deleteBatch(evtIds: List<Long>) {
+        if (evtIds.isEmpty()) return
+
+        val sql = "DELETE FROM BOOKS WHERE EVT_ID = ?"
+
+        try {
+            jdbcTemplate.batchUpdate(sql, object : BatchPreparedStatementSetter {
+                override fun setValues(ps: PreparedStatement, i: Int) {
+                    ps.setLong(1, evtIds[i])
+                }
+                override fun getBatchSize(): Int = evtIds.size
+            })
+        } catch (e: DataAccessException) {
+            log.error("Failed to delete BOOKS batch: ${e.message}", e)
+            throw e
+        }
+    }
+    */
+    // IN () variant... shoud be faster...
+    // but has limits (Oracle supports ~1000 items in IN clause), we have to check if this does make sens
+    /*
+    fun deleteBatch(evtIds: List<Long>) {
+        if (evtIds.isEmpty()) return
+
+        // Build: DELETE FROM BOOKS WHERE EVT_ID IN (?, ?, ?)
+        val placeholders = evtIds.joinToString(",") { "?" }
+        val sql = "DELETE FROM BOOKS WHERE EVT_ID IN ($placeholders)"
+
+        try {
+            jdbcTemplate.update(sql) { ps ->
+                evtIds.forEachIndexed { index, evtId ->
+                    ps.setLong(index + 1, evtId)
+                }
+            }
+        } catch (e: DataAccessException) {
+            log.error("Failed to delete BOOKS batch: ${e.message}", e)
+            throw e
+        }
+    }
+    */
+    fun deleteBatch(evtIds: List<Long>) {
+        if (evtIds.isEmpty()) return
+
+        val chunkSize = 1000 // Oracle's IN clause limit
+
+        try {
+            evtIds.chunked(chunkSize).forEach { chunk ->
+                val placeholders = chunk.joinToString(",") { "?" }
+                val sql = "DELETE FROM BOOKS WHERE EVT_ID IN ($placeholders)"
+
+                jdbcTemplate.update(sql) { ps ->
+                    chunk.forEachIndexed { index, evtId ->
+                        ps.setLong(index + 1, evtId)
+                    }
+                }
+            }
+        } catch (e: DataAccessException) {
+            log.error("Failed to delete BOOKS batch: ${e.message}", e)
+            throw e
+        }
+    }
 
     /**
      * Batch upsert into BOOKS using Oracle MERGE statement.

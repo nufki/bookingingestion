@@ -36,16 +36,16 @@ class BookingQueryService(
         return jdbcTemplate.query(sql, { rs, _ ->
             BookingDto(
                 evtId = rs.getLong("EVT_ID"),
-                buId = rs.getObject("BU_ID", Long::class.java),
-                evtStatusId = rs.getObject("EVT_STATUS_ID", Long::class.java),
-                veriDate = rs.getObject("VERI_DATE", Date::class.java)?.toLocalDate(),
-                bookDate = rs.getObject("BOOK_DATE", Date::class.java)?.toLocalDate(),
-                valDate = rs.getObject("VAL_DATE", Date::class.java)?.toLocalDate(),
-                trxDate = rs.getObject("TRX_DATE", Date::class.java)?.toLocalDate(),
-                perfDate = rs.getObject("PERF_DATE", Date::class.java)?.toLocalDate(),
-                posId = rs.getObject("POS_ID", Long::class.java),
-                qty = rs.getObject("QTY", BigDecimal::class.java),
-                qty3 = rs.getObject("QTY3", BigDecimal::class.java),
+                buId = rs.getObject("BU_ID")?.let { (it as Number).toLong() },
+                evtStatusId = rs.getObject("EVT_STATUS_ID")?.let { (it as Number).toLong() },
+                veriDate = rs.getDate("VERI_DATE")?.toLocalDate(),
+                bookDate = rs.getDate("BOOK_DATE")?.toLocalDate(),
+                valDate = rs.getDate("VAL_DATE")?.toLocalDate(),
+                trxDate = rs.getDate("TRX_DATE")?.toLocalDate(),
+                perfDate = rs.getDate("PERF_DATE")?.toLocalDate(),
+                posId = rs.getObject("POS_ID")?.let { (it as Number).toLong() },
+                qty = rs.getBigDecimal("QTY"),
+                qty3 = rs.getBigDecimal("QTY3"),
                 extlBookText = rs.getString("EXTL_BOOK_TEXT")
             )
         }, posId)

@@ -16,12 +16,8 @@ import org.springframework.kafka.core.KafkaTemplate
 import org.springframework.kafka.test.context.EmbeddedKafka
 import org.springframework.test.context.ActiveProfiles
 import javax.sql.DataSource
-import org.slf4j.LoggerFactory
 import org.springframework.test.context.TestExecutionListeners
 import org.springframework.test.context.event.ApplicationEventsTestExecutionListener
-
-private val log = LoggerFactory.getLogger("oracle-tc")
-
 
 @TestExecutionListeners(
     listeners = [

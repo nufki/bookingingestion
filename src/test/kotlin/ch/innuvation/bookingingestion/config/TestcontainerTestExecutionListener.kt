@@ -2,7 +2,8 @@ package ch.innuvation.bookingingestion.config
 
 import ch.innuvation.bookingingestion.IntegrationTest
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.async
+import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.runBlocking
 import org.springframework.test.context.TestContext
 import org.springframework.test.context.TestExecutionListener
@@ -15,16 +16,16 @@ import org.testcontainers.DockerClientFactory
 class TestcontainerTestExecutionListener : TestExecutionListener {
     val containerStartFunctions =
         setOf(
-            startMySqlContainer(),
+            startOracleContainer(),
         )
 
     override fun beforeTestClass(testContext: TestContext) {
         if (IntegrationTest::class.java.isAssignableFrom(testContext.testClass)) {
             if (DockerClientFactory.instance().isDockerAvailable) {
                 runBlocking(Dispatchers.Default) {
-                    containerStartFunctions.forEach { startContainer ->
-                        launch { startContainer() }
-                    }
+                    containerStartFunctions.map { startContainer ->
+                        async { startContainer() }
+                    }.awaitAll()
                 }
             }
         }

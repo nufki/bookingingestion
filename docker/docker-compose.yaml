@@ -75,14 +75,27 @@ services:
       retries: 20
 
 
-  mysql:
-    image: mysql:8.0
-    container_name: bookingingestion-mysql
+  oracle:
+    image: gvenzl/oracle-free:23-slim-faststart
+    container_name: bookingingestion-oracle
     ports:
-      - "3306:3306"
+      - "1521:1521"
     environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: BOOKING_INGESTION_DB
-      MYSQL_USER: books
-      MYSQL_PASSWORD: books
-    command: --default-authentication-plugin=mysql_native_password
+      ORACLE_PASSWORD: books
+      # Only set ORACLE_DATABASE on first run. If PDB already exists, remove this line.
+      # ORACLE_DATABASE: FREEPDB1
+    volumes:
+      - oracle-data:/opt/oracle/oradata
+    healthcheck:
+      test: ["CMD", "healthcheck.sh"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 30s
+    restart: unless-stopped
+    # After the container starts and is healthy, run the init script to create the user:
+    # docker exec -i bookingingestion-oracle sqlplus sys/books@FREEPDB1 as sysdba < init-oracle-user.sql
+
+volumes:
+  oracle-data:
+    driver: local

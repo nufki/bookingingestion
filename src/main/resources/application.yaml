@@ -3,7 +3,7 @@ spring:
     name: bookingingestion
 
   datasource:
-    url: jdbc:mysql://localhost:3306/BOOKING_INGESTION_DB?useSSL=false&serverTimezone=UTC
+    url: jdbc:oracle:thin:@localhost:1521/freepdb1
     username: books
     password: books
 
@@ -14,8 +14,6 @@ spring:
       enabled: true
   flyway:
     enabled: true
-  jooq:
-    sql-dialect: mysql
 
   kafka:
     properties:

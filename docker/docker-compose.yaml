@@ -81,9 +81,9 @@ services:
     ports:
       - "1521:1521"
     environment:
-      ORACLE_PASSWORD: books
-      # Only set ORACLE_DATABASE on first run. If PDB already exists, remove this line.
-      # ORACLE_DATABASE: FREEPDB1
+      ORACLE_PASSWORD: books          # SYS/SYSTEM password
+      APP_USER: books                 # Explicitly declare app user
+      APP_USER_PASSWORD: books        # App user password
     volumes:
       - oracle-data:/opt/oracle/oradata
     healthcheck:
@@ -93,8 +93,6 @@ services:
       retries: 10
       start_period: 30s
     restart: unless-stopped
-    # After the container starts and is healthy, run the init script to create the user:
-    # docker exec -i bookingingestion-oracle sqlplus sys/books@FREEPDB1 as sysdba < init-oracle-user.sql
 
 volumes:
   oracle-data:
